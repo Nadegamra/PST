@@ -1,10 +1,10 @@
 version: '3.7'
-name: stpp
+name: pst
 
 services:
   frontend_cra:
-    container_name: frontend_stpp
-    image: frontend-frontend_stpp:dev
+    container_name: frontend_pst
+    image: frontend-frontend_pst:dev
     build:
       context: .
       dockerfile: frontend/Dockerfile
@@ -19,7 +19,7 @@ services:
       - CHOKIDAR_USEPOLLING=true
       - WATCHPACK_POLLING=true
   backend:
-    container_name: backend 
+    container_name: backend_pst
     image: ${DOCKER_REGISTRY-}backend:dev
     restart: unless-stopped
     build:
@@ -34,13 +34,13 @@ services:
       - /home/karolis/.certs:/certs
     working_dir: /src/Backend
   mysql:
-    container_name: sttp_db
+    container_name: pst_db
     image: ${DOCKER_REGISTRY-}mysql
     restart: unless-stopped
     ports:
       - '3307:3306'
     volumes:
-      - sttp_data:/var/lib/mysql
+      - pst_data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: 'Password123!'
       MYSQL_ROOT_HOST: '%'
@@ -48,8 +48,8 @@ services:
       MYSQL_PASSWORD: 'Password123!'
 networks:
   default:
-    name: sttp
+    name: pst
 volumes:
-  sttp_data:
+  pst_data:
 
 
