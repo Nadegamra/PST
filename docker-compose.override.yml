@@ -1,0 +1,16 @@
+services:
+  backend:
+    environment: 
+        ASPNETCORE_ENVIRONMENT: 'Development'
+        ASPNETCORE_URLS: 'https://+:443;http://+:80'
+
+        ConnectionStrings__DefaultConnection: "server=sttp_db; port=3306; user=root; password=Password123!; database=STTP"
+        
+        ASPNETCORE_Kestrel__Certificates__Default__Path: "/certs/localhost.crt"
+        ASPNETCORE_Kestrel__Certificates__Default__KeyPath: "/certs/localhost.key" 
+
+    env_file:
+      - dev.env
+    ports:
+      - "44395:80"
+      - "44396:443"

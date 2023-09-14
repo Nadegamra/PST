@@ -1,0 +1,55 @@
+version: '3.7'
+name: stpp
+
+services:
+  frontend_cra:
+    container_name: frontend_stpp
+    image: frontend-frontend_stpp:dev
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+      target: dev
+    volumes:
+      - './frontend:/app'
+      - '/app/node_modules'
+    ports:
+      - 3000:3000
+    environment:
+      - WDS_SOCKET_HOST=127.0.0.1 
+      - CHOKIDAR_USEPOLLING=true
+      - WATCHPACK_POLLING=true
+  backend:
+    container_name: backend 
+    image: ${DOCKER_REGISTRY-}backend:dev
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - mysql
+    volumes:
+      - .:/src
+      - /src/Backend/obj/
+      - /src/Backend/bin/
+      - /home/karolis/.certs:/certs
+    working_dir: /src/Backend
+  mysql:
+    container_name: sttp_db
+    image: ${DOCKER_REGISTRY-}mysql
+    restart: unless-stopped
+    ports:
+      - '3307:3306'
+    volumes:
+      - sttp_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 'Password123!'
+      MYSQL_ROOT_HOST: '%'
+      MYSQL_USER: 'admin'
+      MYSQL_PASSWORD: 'Password123!'
+networks:
+  default:
+    name: sttp
+volumes:
+  sttp_data:
+
+
