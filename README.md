@@ -16,6 +16,8 @@
 - .NET7 + EF Core
 - React.js + TypeScript
 - MySql
+# Requirements
+- Having Docker installed
 # Launch instructions
 - Configure app (dev.env):
   - Specify SMTP account credentials (Email functionalities)
