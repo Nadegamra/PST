@@ -4,22 +4,26 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 namespace Backend.Data
 {
-    public class AppDbContext: IdentityDbContext<User, IdentityRole<int>, int>
+    public class AppDbContext : IdentityDbContext<User, IdentityRole<int>, int>
     {
-        public DbSet<RegistrationRequest> RegistrationRequests { get; set; }
-        
-        public DbSet<Models.Console> Consoles  { get; set; }
-        public DbSet<Image> Images { get; set; }
-        public DbSet<EmailChangeToken> EmailChangeTokens { get; set; }
-        public DbSet<EmailConfirmationToken> EmailConfirmationTokens { get; set; }
-        public DbSet<PasswordResetToken> PasswordResetTokens { get; set; }
-        public DbSet<UserConsole> UserConsoles { get; set; }
-        public DbSet<Borrowing> Borrowings { get; set; }
-        public DbSet<Conversation> Conversations { get; set; }
-        public DbSet<Message> Messages { get; set; }
-        public DbSet<MessageFile> MessageFiles { get; set; }
+        public virtual DbSet<RegistrationRequest> RegistrationRequests { get; set; }
+
+        public virtual DbSet<Models.Console> Consoles { get; set; }
+        public virtual DbSet<Image> Images { get; set; }
+        public virtual DbSet<EmailChangeToken> EmailChangeTokens { get; set; }
+        public virtual DbSet<EmailConfirmationToken> EmailConfirmationTokens { get; set; }
+        public virtual DbSet<PasswordResetToken> PasswordResetTokens { get; set; }
+        public virtual DbSet<UserConsole> UserConsoles { get; set; }
+        public virtual DbSet<Borrowing> Borrowings { get; set; }
+        public virtual DbSet<Conversation> Conversations { get; set; }
+        public virtual DbSet<Message> Messages { get; set; }
+        public virtual DbSet<MessageFile> MessageFiles { get; set; }
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         { }
+        public AppDbContext()
+        {
+
+        }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Models.Console>()
@@ -34,11 +38,11 @@ namespace Backend.Data
 
             modelBuilder.Entity<IdentityRole<int>>().HasData(new IdentityRole<int> { Id = 1, Name = "admin", NormalizedName = "ADMIN" },
                                                             new IdentityRole<int> { Id = 2, Name = "lender", NormalizedName = "LENDER" },
-                                                            new IdentityRole<int> { Id = 3, Name = "borrower", NormalizedName = "BORROWER"});
+                                                            new IdentityRole<int> { Id = 3, Name = "borrower", NormalizedName = "BORROWER" });
 
-            modelBuilder.Entity<User>().HasData(new User { Id = 1, IsCompany=false, FirstName = "Admy", LastName = "Nisterson", UserName = "admin@admin.com", NormalizedUserName = "ADMIN@ADMIN.COM", Email = "admin@admin.com", EmailConfirmed=true, NormalizedEmail = "ADMIN@ADMIN.COM", PasswordHash = "AQAAAAEAACcQAAAAEK4hVsHx9G6FTUDDlJaY/l1aRXqpoUZU9nkEkvECUI2uQ+FHoFYHjlJpmP3KOss/qg==", SecurityStamp = Guid.NewGuid().ToString()},
-                                                new User { Id = 2, IsCompany=false,  FirstName = "Cuzy", LastName= "Tomerson", UserName = "customer@example.com", NormalizedUserName = "CUSTOMER@EXAMPLE.COM", Email = "customer@example.com", EmailConfirmed = true, NormalizedEmail = "CUSTOMER@EXAMPLE.COM", PasswordHash = "AQAAAAEAACcQAAAAEK4hVsHx9G6FTUDDlJaY/l1aRXqpoUZU9nkEkvECUI2uQ+FHoFYHjlJpmP3KOss/qg==", SecurityStamp = Guid.NewGuid().ToString()},
-                                                new User { Id = 3, IsCompany=true,  CompanyName = "UAB „Tikra įmonė“", CompanyCode = "123456", UserName = "company@example.com", NormalizedUserName = "COMPANY@EXAMPLE.COM", Email = "company@example.com", EmailConfirmed = true, NormalizedEmail = "COMPANY@EXAMPLE.COM", PasswordHash = "AQAAAAEAACcQAAAAEK4hVsHx9G6FTUDDlJaY/l1aRXqpoUZU9nkEkvECUI2uQ+FHoFYHjlJpmP3KOss/qg==", SecurityStamp = Guid.NewGuid().ToString() });
+            modelBuilder.Entity<User>().HasData(new User { Id = 1, IsCompany = false, FirstName = "Admy", LastName = "Nisterson", UserName = "admin@admin.com", NormalizedUserName = "ADMIN@ADMIN.COM", Email = "admin@admin.com", EmailConfirmed = true, NormalizedEmail = "ADMIN@ADMIN.COM", PasswordHash = "AQAAAAEAACcQAAAAEK4hVsHx9G6FTUDDlJaY/l1aRXqpoUZU9nkEkvECUI2uQ+FHoFYHjlJpmP3KOss/qg==", SecurityStamp = Guid.NewGuid().ToString() },
+                                                new User { Id = 2, IsCompany = false, FirstName = "Cuzy", LastName = "Tomerson", UserName = "customer@example.com", NormalizedUserName = "CUSTOMER@EXAMPLE.COM", Email = "customer@example.com", EmailConfirmed = true, NormalizedEmail = "CUSTOMER@EXAMPLE.COM", PasswordHash = "AQAAAAEAACcQAAAAEK4hVsHx9G6FTUDDlJaY/l1aRXqpoUZU9nkEkvECUI2uQ+FHoFYHjlJpmP3KOss/qg==", SecurityStamp = Guid.NewGuid().ToString() },
+                                                new User { Id = 3, IsCompany = true, CompanyName = "UAB „Tikra įmonė“", CompanyCode = "123456", UserName = "company@example.com", NormalizedUserName = "COMPANY@EXAMPLE.COM", Email = "company@example.com", EmailConfirmed = true, NormalizedEmail = "COMPANY@EXAMPLE.COM", PasswordHash = "AQAAAAEAACcQAAAAEK4hVsHx9G6FTUDDlJaY/l1aRXqpoUZU9nkEkvECUI2uQ+FHoFYHjlJpmP3KOss/qg==", SecurityStamp = Guid.NewGuid().ToString() });
 
             modelBuilder.Entity<IdentityUserRole<int>>().HasData(new IdentityUserRole<int> { UserId = 1, RoleId = 1 },
                                                                  new IdentityUserRole<int> { UserId = 2, RoleId = 2 },
