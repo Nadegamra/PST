@@ -1,17 +1,5 @@
-using Xunit;
-using Moq.EntityFrameworkCore;
-using Moq;
-using Backend.Data;
-using Microsoft.EntityFrameworkCore;
-using Backend.Data.Models;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
-using System.Net.Mail;
-using Backend.Handlers;
-using Backend.Properties;
 using System.Text.Json;
-using Backend.Data.Migrations;
-using Backend.Test.Mocks;
 
 namespace Backend.Test
 {
