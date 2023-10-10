@@ -48,7 +48,7 @@ namespace Backend.Handlers
             {
                 From = new MailAddress(_config.Value.Username),
                 Subject = "Account confirmation",
-                Body = $"<div>If you have not created this account, you can ignore this email.<br/>Your email confirmation link:<br/>http://localhost:3000/confirmEmail/{item.Entity.Token.Replace('/','_')}</div>",
+                Body = $"<div>If you have not created this account, you can ignore this email.<br/>Your email confirmation link:<br/>http://localhost:3000/confirmEmail/{item.Entity.Token.Replace('/', '_')}</div>",
                 IsBodyHtml = true,
             };
             mailMessage.To.Add(_config.Value.TestEmail);
@@ -199,7 +199,7 @@ namespace Backend.Handlers
         public async Task<List<string>> GetUnconfirmedEmails(ClaimsPrincipal userClaims)
         {
             User user = await _userManager.GetUserAsync(userClaims);
-            return _context.EmailChangeTokens.Select(x => x.NewEmail).ToList();
+            return _context.EmailChangeTokens.Where(x => x.UserId == user.Id).Select(x => x.NewEmail).ToList();
         }
 
         public async Task ChangeEmail(string token)

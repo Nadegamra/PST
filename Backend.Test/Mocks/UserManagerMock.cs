@@ -92,6 +92,24 @@ namespace Backend.Test.Mocks
                     return IdentityResult.Failed();
                 }
             });
+            mgr.Setup(x => x.ResetPasswordAsync(It.IsAny<User>(), It.IsAny<string>(), It.IsAny<string>())).ReturnsAsync((User user, string token, string newPassword) =>
+            {
+                PasswordResetToken? resetToken = MockData.PasswordResetTokens.Where(x => x.Token == token).FirstOrDefault();
+                if (resetToken == null)
+                {
+                    return IdentityResult.Failed();
+                }
+                if (resetToken.UserId == user.Id)
+                {
+                    int index = ls.FindIndex(x => x.Id == user.Id);
+                    ls[index].PasswordHash = newPassword;
+                    return IdentityResult.Success;
+                }
+                else
+                {
+                    return IdentityResult.Failed();
+                }
+            });
             mgr.Setup(x => x.UpdateAsync(It.IsAny<User>())).ReturnsAsync((User user) =>
             {
                 int index = ls.FindIndex(x => x.Id == user.Id);

@@ -219,7 +219,7 @@ namespace Backend.Test
             var claimsPrincipal = new ClaimsPrincipal(identity);
             List<string> unconfirmed = await handler.GetUnconfirmedEmails(claimsPrincipal);
             // Assert
-            string expectedString = JsonSerializer.Serialize(MockData.EmailChangeTokens.Where(x => x.UserId == 2).ToList());
+            string expectedString = JsonSerializer.Serialize(MockData.EmailChangeTokens.Where(x => x.UserId == 2).Select(x => x.NewEmail).ToList());
             string actualString = JsonSerializer.Serialize(unconfirmed);
             Assert.Equal(expectedString, actualString);
         }
