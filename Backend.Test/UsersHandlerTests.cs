@@ -161,7 +161,7 @@ namespace Backend.Test
             var updatedUser = dbMock.Object.Users.Where(x => x.Id == 2).First();
             Assert.Equal("Country1", updatedUser.Country);
             Assert.Equal("County1", updatedUser.County);
-            Assert.Equal("City1", updatedUser.County);
+            Assert.Equal("City1", updatedUser.City);
             Assert.Equal("Address1", updatedUser.StreetAddress);
             Assert.Equal("Code", updatedUser.PostalCode);
         }
