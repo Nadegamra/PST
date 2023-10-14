@@ -6,6 +6,7 @@ using System.Net.Mail;
 using System.Security.Claims;
 using AutoMapper;
 using Backend.Data.Views.User;
+using Backend.Services;
 
 namespace Backend.Handlers
 {
@@ -37,7 +38,7 @@ namespace Backend.Handlers
         public async Task<UserGet> Login(UserLogin data)
         {
             var user = await GetUser(data);
-            if(user is null)
+            if (user is null)
             {
                 throw new ArgumentException("Login credentials are incorrect");
             }
@@ -89,7 +90,8 @@ namespace Backend.Handlers
             {
                 await _userManager.AddToRoleAsync(user, "lender");
                 User createdUser = (await _userManager.FindByEmailAsync(user.Email!))!;
-                await _usersHandler.SendConfirmationEmail(createdUser);
+                var message = await _usersHandler.GenerateConfirmationEmail(createdUser);
+                MailService.SendEmail(message);
                 return;
             }
             else
@@ -111,7 +113,8 @@ namespace Backend.Handlers
             {
                 await _userManager.AddToRoleAsync(user, "lender");
                 User createdUser = await _userManager.FindByEmailAsync(user.Email);
-                await _usersHandler.SendConfirmationEmail(createdUser);
+                var message = await _usersHandler.GenerateConfirmationEmail(createdUser);
+                MailService.SendEmail(message);
                 return;
             }
             else
@@ -125,7 +128,7 @@ namespace Backend.Handlers
         {
             var user = _mapper.Map<User>(data);
             user.UserName = data.Email;
-            user.IsCompany= true;
+            user.IsCompany = true;
 
             var result = await _userManager.CreateAsync(user, data.Password);
 
@@ -150,7 +153,7 @@ namespace Backend.Handlers
 
         public async Task<RegistrationRequest> SubmitRegistrationRequest(RegistrationRequest request)
         {
-            request.DateCreated= DateTime.Now;
+            request.DateCreated = DateTime.Now;
             var result = await _context.RegistrationRequests.AddAsync(request);
 
             await _context.SaveChangesAsync();
@@ -159,7 +162,7 @@ namespace Backend.Handlers
         }
         public async Task<bool> ApproveRegistrationRequest(RegistrationRequestApproval requestApproval)
         {
-            
+
             var request = await _context.RegistrationRequests.Where(x => x.Id == requestApproval.RequestId).FirstOrDefaultAsync();
             if (request == null)
             {
@@ -197,7 +200,8 @@ namespace Backend.Handlers
             {
                 await _userManager.AddToRoleAsync(user, "borrower");
                 User createdUser = await _userManager.FindByEmailAsync(user.Email);
-                await _usersHandler.SendConfirmationEmail(createdUser);
+                var message = await _usersHandler.GenerateConfirmationEmail(createdUser);
+                MailService.SendEmail(message);
                 return;
             }
             else
@@ -206,6 +210,6 @@ namespace Backend.Handlers
                 throw new Exception(errors);
             }
         }
-        
+
     }
 }

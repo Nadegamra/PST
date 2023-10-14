@@ -33,7 +33,7 @@ namespace Backend.Handlers
             return (await _userManager.GetUsersInRoleAsync(roleName)).ToList();
         }
 
-        public async Task SendConfirmationEmail(User user)
+        public async Task<MailMessage> GenerateConfirmationEmail(User user)
         {
             EmailConfirmationToken? token = await _context.EmailConfirmationTokens.Where(x => x.UserId == user.Id).FirstOrDefaultAsync();
             if (token != null)
@@ -53,14 +53,7 @@ namespace Backend.Handlers
             };
             mailMessage.To.Add(_config.Value.TestEmail);
 
-            var smtpClient = new SmtpClient("smtp.gmail.com")
-            {
-                Port = 587,
-                Credentials = new NetworkCredential(_config.Value.Username, _config.Value.Password),
-                EnableSsl = true,
-            };
-            smtpClient.Send(mailMessage);
-            return;
+            return mailMessage;
         }
 
         public async Task ConfirmEmail(string confirmationCode)
@@ -76,11 +69,12 @@ namespace Backend.Handlers
             await _context.SaveChangesAsync();
         }
 
-        public async Task SendPasswordResetEmail(string email)
+        public async Task<MailMessage> GeneratePasswordResetEmail(string email)
         {
             User user = await _userManager.FindByEmailAsync(email.ToUpper());
             if (user == null)
             {
+
                 throw new Exception("This email has no associated user");
             }
             PasswordResetToken? token = await _context.PasswordResetTokens.Where(x => x.UserId == user.Id).FirstOrDefaultAsync();
@@ -88,7 +82,7 @@ namespace Backend.Handlers
             {
                 _context.PasswordResetTokens.Remove(token);
             }
-            await _context.PasswordResetTokens.AddAsync(new PasswordResetToken { UserId = user.Id, Token = await _userManager.GeneratePasswordResetTokenAsync(user) });
+            _context.PasswordResetTokens.Add(new PasswordResetToken { UserId = user.Id, Token = await _userManager.GeneratePasswordResetTokenAsync(user) });
             await _context.SaveChangesAsync();
             token = await _context.PasswordResetTokens.Where(x => x.UserId == user.Id).FirstAsync();
 
@@ -100,14 +94,7 @@ namespace Backend.Handlers
                 IsBodyHtml = true,
             };
             mailMessage.To.Add(_config.Value.TestEmail);
-            var smtpClient = new SmtpClient("smtp.gmail.com")
-            {
-                Port = 587,
-                Credentials = new NetworkCredential(_config.Value.Username, _config.Value.Password),
-                EnableSsl = true,
-            };
-            smtpClient.Send(mailMessage);
-            return;
+            return mailMessage;
         }
 
         public async Task ResetPassword(string resetCode, string newPassword)
@@ -166,7 +153,7 @@ namespace Backend.Handlers
             }
         }
 
-        public async Task SendEmailAddressChangeEmail(ClaimsPrincipal userClaims, string newEmail)
+        public async Task<MailMessage> GenerateEmailAddressChangeEmail(ClaimsPrincipal userClaims, string newEmail)
         {
             User user = await _userManager.GetUserAsync(userClaims);
             EmailChangeToken? token = await _context.EmailChangeTokens.Where(x => x.UserId == user.Id).FirstOrDefaultAsync();
@@ -186,14 +173,7 @@ namespace Backend.Handlers
                 IsBodyHtml = true,
             };
             mailMessage.To.Add(_config.Value.TestEmail);// Replace with newEmail
-            var smtpClient = new SmtpClient("smtp.gmail.com")
-            {
-                Port = 587,
-                Credentials = new NetworkCredential("ispagrindai945@gmail.com", "rolczdktsktctrfq"),
-                EnableSsl = true,
-            };
-            smtpClient.Send(mailMessage);
-            return;
+            return mailMessage;
         }
 
         public async Task<List<string>> GetUnconfirmedEmails(ClaimsPrincipal userClaims)

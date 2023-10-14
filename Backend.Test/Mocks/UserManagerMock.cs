@@ -48,7 +48,7 @@ namespace Backend.Test.Mocks
             });
             mgr.Setup(x => x.FindByEmailAsync(It.IsAny<string>())).ReturnsAsync((string email) =>
             {
-                return ls.Where(x => x.Email == email).FirstOrDefault();
+                return ls.Where(x => x.Email.ToUpper() == email.ToUpper()).FirstOrDefault();
             });
             mgr.Setup(x => x.FindByIdAsync(It.IsAny<string>())).ReturnsAsync((string id) =>
             {
@@ -115,6 +115,10 @@ namespace Backend.Test.Mocks
                 int index = ls.FindIndex(x => x.Id == user.Id);
                 ls[index] = user;
                 return IdentityResult.Success;
+            });
+            mgr.Setup(x => x.GeneratePasswordResetTokenAsync(It.IsAny<User>())).ReturnsAsync((User user) =>
+            {
+                return "NewResetToken";
             });
 
             return mgr;
