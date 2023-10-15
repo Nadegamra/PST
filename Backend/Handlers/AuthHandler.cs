@@ -124,28 +124,6 @@ namespace Backend.Handlers
             }
         }
 
-        public async Task<UserGet> RegisterBorrower(RegisterLegal data)
-        {
-            var user = _mapper.Map<User>(data);
-            user.UserName = data.Email;
-            user.IsCompany = true;
-
-            var result = await _userManager.CreateAsync(user, data.Password);
-
-            if (result.Succeeded)
-            {
-                await _userManager.AddToRoleAsync(user, "borrower");
-                await _signInManager.SignInAsync(user, isPersistent: false);
-
-                return _mapper.Map<UserGet>(user);
-            }
-            else
-            {
-                string errors = string.Join("\n", result.Errors.Select(e => e.Description));
-                throw new Exception(errors);
-            }
-        }
-
         public async Task<List<RegistrationRequest>> GetRegistrationRequests()
         {
             return _context.RegistrationRequests.Select(x => x).ToList();
