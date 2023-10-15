@@ -144,7 +144,7 @@ namespace Backend.Test.Mocks
         };
 
         public static List<UserConsole> UserConsoles = new List<UserConsole> {
-            new UserConsole { Id = 1, UserId = 2, ConsoleId = 1, Amount = 1, Accessories = "1 controller", ConsoleStatus = UserConsoleStatus.UNCONFIRMED, Images = Images.Where(x=>x.UserConsoleId == 1).ToList()},
+            new UserConsole { Id = 1, UserId = 2, ConsoleId = 1, Amount = 1, Accessories = "1 controller", ConsoleStatus = UserConsoleStatus.UNCONFIRMED, Images = Images.Where(x=>x.UserConsoleId == 1).ToList(),},
             new UserConsole { Id = 2, UserId = 2, ConsoleId = 2, Amount = 1, Accessories = "2 controllers", ConsoleStatus = UserConsoleStatus.AT_PLATFORM, Images = Images.Where(x=>x.UserConsoleId == 2).ToList() },
             new UserConsole { Id = 3, UserId = 2, ConsoleId = 3, Amount = 3, Accessories = "Switch valdikliai", ConsoleStatus = UserConsoleStatus.AT_PLATFORM, Images = Images.Where(x=>x.UserConsoleId == 3).ToList() },
             new UserConsole { Id = 4, UserId = 2, ConsoleId = 3, Amount = 2, Accessories = "Switch valdikliai", BorrowingId = 1, ConsoleStatus = UserConsoleStatus.AT_LENDER, Images = Images.Where(x=>x.UserConsoleId == 4).ToList() },

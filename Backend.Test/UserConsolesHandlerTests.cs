@@ -1,7 +1,9 @@
 
 using System.Security.Claims;
+using System.Text;
 using System.Text.Json;
 using AutoMapper;
+using Backend.Data.Views.Image;
 using Backend.Data.Views.UserConsole;
 using Backend.Test.Mocks.Handlers;
 
@@ -34,6 +36,7 @@ namespace Backend.Test
         {
             // Arrange
             var dbMock = new DbContextMock();
+            var mapper = AutomapperMock.GetMock();
             var handler = UserConsolesHandlerMock.GetMock(dbMock);
             var claims = new List<Claim>()
             {
@@ -42,15 +45,18 @@ namespace Backend.Test
             var identity = new ClaimsIdentity(claims, "TestAuthType");
             var claimsPrincipal = new ClaimsPrincipal(identity);
             // Act
+            var actualResult = await handler.GetUserConsolesByStatusAsync(claimsPrincipal, UserConsoleStatus.UNCONFIRMED);
+            var expectedResult = mapper.Map<List<UserConsole>, List<UserConsoleGetDto>>(dbMock.UserConsoles.Where(x => x.UserId == 2 && x.ConsoleStatus == UserConsoleStatus.UNCONFIRMED).ToList());
 
             // Assert
-            Assert.Equal(1, 0);
+            Assert.Equal(JsonSerializer.Serialize(actualResult), JsonSerializer.Serialize(expectedResult));
         }
         [Fact]
         public async void GetUserConsoleAsyncTest()
         {
             // Arrange
             var dbMock = new DbContextMock();
+            var mapper = AutomapperMock.GetMock();
             var handler = UserConsolesHandlerMock.GetMock(dbMock);
             var claims = new List<Claim>()
             {
@@ -59,15 +65,17 @@ namespace Backend.Test
             var identity = new ClaimsIdentity(claims, "TestAuthType");
             var claimsPrincipal = new ClaimsPrincipal(identity);
             // Act
-
+            var actualResult = await handler.GetUserConsoleAsync(2);
+            var expectedResult = mapper.Map<UserConsole, UserConsoleGetDto>(dbMock.UserConsoles.Where(x => x.Id == 2).First());
             // Assert
-            Assert.Equal(1, 0);
+            Assert.Equal(JsonSerializer.Serialize(actualResult), JsonSerializer.Serialize(expectedResult));
         }
         [Fact]
         public async void AddUserConsoleAsyncTest()
         {
             // Arrange
             var dbMock = new DbContextMock();
+            var mapper = AutomapperMock.GetMock();
             var handler = UserConsolesHandlerMock.GetMock(dbMock);
             var claims = new List<Claim>()
             {
@@ -75,16 +83,23 @@ namespace Backend.Test
             };
             var identity = new ClaimsIdentity(claims, "TestAuthType");
             var claimsPrincipal = new ClaimsPrincipal(identity);
-            // Act
-
+            // ActValueTask.FromResult(
+            var images = new List<ImageAddDto>() { new ImageAddDto { Name = "name", Description = "description", Stream = Convert.ToBase64String(Encoding.UTF8.GetBytes("stream")) } };
+            await handler.AddUserConsoleAsync(new UserConsoleAddDto { ConsoleId = 2, Amount = 1, Accessories = "none", Images = images }, claimsPrincipal);
+            var actualResult = dbMock.UserConsoles.Last();
+            var addedImages = new List<Image> { dbMock.Images.Last() };
             // Assert
-            Assert.Equal(1, 0);
+            Assert.Equal(2, actualResult.ConsoleId);
+            Assert.Equal(1, actualResult.Amount);
+            Assert.Equal("none", actualResult.Accessories);
+            Assert.Equal(JsonSerializer.Serialize(actualResult.Images), JsonSerializer.Serialize(addedImages));
         }
         [Fact]
         public async void UpdateUserConsoleAsyncTest()
         {
             // Arrange
             var dbMock = new DbContextMock();
+            var mapper = AutomapperMock.GetMock();
             var handler = UserConsolesHandlerMock.GetMock(dbMock);
             var claims = new List<Claim>()
             {
@@ -102,6 +117,7 @@ namespace Backend.Test
         {
             // Arrange
             var dbMock = new DbContextMock();
+            var mapper = AutomapperMock.GetMock();
             var handler = UserConsolesHandlerMock.GetMock(dbMock);
             var claims = new List<Claim>()
             {
@@ -119,6 +135,7 @@ namespace Backend.Test
         {
             // Arrange
             var dbMock = new DbContextMock();
+            var mapper = AutomapperMock.GetMock();
             var handler = UserConsolesHandlerMock.GetMock(dbMock);
             var claims = new List<Claim>()
             {

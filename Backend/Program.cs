@@ -69,7 +69,6 @@ var builder = WebApplication.CreateBuilder(args);
     services.AddTransient<AuthHandler>();
     services.AddTransient<ConsolesHandler>();
     services.AddTransient<UsersHandler>();
-    services.AddTransient<AccessoriesHandler>();
     services.AddTransient<FilesHandler>();
     services.AddTransient<UserConsolesHandler>();
     services.AddTransient<BorrowingsHandler>();

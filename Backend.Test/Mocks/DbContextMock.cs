@@ -1,6 +1,9 @@
 using System.Text.Json;
 using Backend.Data;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Moq.EntityFrameworkCore;
 
 namespace Backend.Test.Mocks
@@ -64,6 +67,16 @@ namespace Backend.Test.Mocks
             {
                 image.Id = Images.Last().Id + 1;
                 Images.Add(image);
+                if (image.UserConsoleId != null)
+                {
+                    int idx = UserConsoles.FindIndex(x => x.Id == image.UserConsoleId);
+                    UserConsoles[idx].Images.Add(image);
+                }
+                else if (image.ConsoleId != null)
+                {
+                    int idx = Consoles.FindIndex(x => x.Id == image.UserConsoleId);
+                    Consoles[idx].Images.Add(image);
+                }
                 return null;
             });
             DbMock.Setup(x => x.Images.Remove(It.IsAny<Image>())).Returns((Image image) =>
@@ -78,6 +91,20 @@ namespace Backend.Test.Mocks
                 MessageFiles.Add(messageFile);
                 return null;
             });
+            DbMock.Setup(x => x.UserConsoles.Add(It.IsAny<UserConsole>())).Returns((UserConsole userConsole) =>
+            {
+                userConsole.Id = UserConsoles.Last().Id + 1;
+                userConsole.Images = new List<Image>();
+                UserConsoles.Add(userConsole);
+
+                return new EntityEntry<UserConsole>
+                (new InternalEntityEntry(
+                    new Mock<IStateManager>().Object,
+                    new RuntimeEntityType("UserConsole", typeof(UserConsole), false, null, null, null, Microsoft.EntityFrameworkCore.ChangeTrackingStrategy.Snapshot, null, false, null),
+                    userConsole
+                    ));
+            });
         }
+        delegate UserConsole AddUserConsole(UserConsole console);
     }
 }

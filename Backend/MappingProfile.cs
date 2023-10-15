@@ -49,6 +49,7 @@ namespace Backend
             CreateMap<Image, ImageGetDto>(MemberList.None);
             CreateMap<ImageAddDto, Image>(MemberList.None);
             CreateMap<ImageUpdateDto, Image>(MemberList.None);
+            CreateMap<Image, ImageAddDto>(MemberList.None);
 
             CreateMap<MessageFile, MessageFileGetDto>(MemberList.None);
             CreateMap<MessageFileAddDto, MessageFile>(MemberList.None);
