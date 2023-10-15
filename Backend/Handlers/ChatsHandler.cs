@@ -27,13 +27,13 @@ namespace Backend.Handlers
 
         public async Task<List<ConversationGetDto>> GetAllConversations()
         {
-            List<ConversationGetDto> conversationGets = _mapper.Map<List<Conversation>, List<ConversationGetDto>>(await _context.Conversations.Include(x => x.Messages).ThenInclude(x=>x.MessageFiles).Include(x => x.Borrowing).Include(x => x.UserConsole).ThenInclude(x => x.Console).Include(x => x.UserConsole).ThenInclude(x => x.Images).ToListAsync());
-            return conversationGets.Where(x=>x.Messages.Count > 0).OrderByDescending(x => x.Messages.Max(x => x.DateSent)).ToList().Union(conversationGets).ToList();
+            List<ConversationGetDto> conversationGets = _mapper.Map<List<Conversation>, List<ConversationGetDto>>(await _context.Conversations.Include(x => x.Messages).ThenInclude(x => x.MessageFiles).Include(x => x.Borrowing).Include(x => x.UserConsole).ThenInclude(x => x.Console).Include(x => x.UserConsole).ThenInclude(x => x.Images).ToListAsync());
+            return conversationGets.Where(x => x.Messages.Count > 0).OrderByDescending(x => x.Messages.Max(x => x.DateSent)).ToList().Union(conversationGets).ToList();
         }
         public async Task<List<ConversationGetDto>> GetLenderConversations(ClaimsPrincipal userClaims)
         {
             var user = await _userManager.GetUserAsync(userClaims);
-            var userConsoleIds = _context.UserConsoles.Where(x=>x.UserId == user.Id).Select(x=>x.Id).ToList();
+            var userConsoleIds = _context.UserConsoles.Where(x => x.UserId == user.Id).Select(x => x.Id).ToList();
             List<ConversationGetDto> conversationGets = _mapper.Map<List<Conversation>, List<ConversationGetDto>>(await _context.Conversations.Where(x => x.UserConsoleId != null).Where(x => userConsoleIds.Contains(x.UserConsoleId ?? -1)).Include(x => x.Messages).ThenInclude(x => x.MessageFiles).Include(x => x.UserConsole).ThenInclude(x => x.Console).Include(x => x.UserConsole).ThenInclude(x => x.Images).ToListAsync());
             return conversationGets.Where(x => x.Messages.Count > 0).OrderByDescending(x => x.Messages.Max(x => x.DateSent)).ToList().Union(conversationGets).ToList();
         }
@@ -47,15 +47,15 @@ namespace Backend.Handlers
 
         public async Task<ConversationGetDto> GetConversation(int userConsoleId)
         {
-            return _mapper.Map<Conversation,ConversationGetDto>(await _context.Conversations.Include(x=>x.Messages).ThenInclude(x => x.MessageFiles).Include(x => x.UserConsole).ThenInclude(x => x.Console).Include(x => x.UserConsole).ThenInclude(x => x.Images).Where(x => x.UserConsoleId == userConsoleId).FirstOrDefaultAsync());
+            return _mapper.Map<Conversation, ConversationGetDto>(await _context.Conversations.Include(x => x.Messages).ThenInclude(x => x.MessageFiles).Include(x => x.UserConsole).ThenInclude(x => x.Console).Include(x => x.UserConsole).ThenInclude(x => x.Images).Where(x => x.UserConsoleId == userConsoleId).FirstOrDefaultAsync());
         }
         public async Task ContactLender(int userConsoleId)
         {
-            if(await _context.Conversations.Where(x => x.UserConsoleId == userConsoleId).FirstOrDefaultAsync() != null)
+            if (await _context.Conversations.Where(x => x.UserConsoleId == userConsoleId).FirstOrDefaultAsync() != null)
             {
                 return;
             }
-            var result = await _context.Conversations.AddAsync(new Conversation { UserConsoleId= userConsoleId });
+            var result = _context.Conversations.Add(new Conversation { UserConsoleId = userConsoleId });
             await _context.SaveChangesAsync();
 
             var userConsole = _context.UserConsoles.Where(x => x.Id == userConsoleId).First();
@@ -71,7 +71,7 @@ namespace Backend.Handlers
             {
                 return;
             }
-            var result = await _context.Conversations.AddAsync(new Conversation { BorrowingId = borrowingId });
+            var result = _context.Conversations.Add(new Conversation { BorrowingId = borrowingId });
             await _context.SaveChangesAsync();
 
             var borrowing = await _context.Borrowings.Where(x => x.Id == borrowingId).FirstAsync();
@@ -88,7 +88,7 @@ namespace Backend.Handlers
             List<MessageFileAddDto> files = addDto.Files.ToList();
 
             addDto.Files = null;
-            var result = await _context.Messages.AddAsync(new Message { ConversationId = addDto.ConversationId, Text = addDto.Text, FromAdmin = roles[0].ToLower() == "admin", DateSent = DateTime.Now });
+            var result = _context.Messages.Add(new Message { ConversationId = addDto.ConversationId, Text = addDto.Text, FromAdmin = roles[0].ToLower() == "admin", DateSent = DateTime.Now });
             await _context.SaveChangesAsync();
 
             //Add MessageFiles
@@ -97,7 +97,7 @@ namespace Backend.Handlers
                 files[i].MessageId = result.Entity.Id;
                 await _filesHandler.AddMessageFileAsync(files[i]);
             }
-            
+
         }
     }
 }

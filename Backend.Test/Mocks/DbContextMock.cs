@@ -129,6 +129,24 @@ namespace Backend.Test.Mocks
                 Consoles.RemoveAt(idx);
                 return null;
             });
+            DbMock.Setup(x => x.Conversations.Add(It.IsAny<Conversation>())).Returns((Conversation conversation) =>
+            {
+                conversation.Id = Conversations.Last().Id + 1;
+                Conversations.Add(conversation);
+
+                return new EntityEntry<Conversation>
+                (new InternalEntityEntry(
+                    new Mock<IStateManager>().Object,
+                    new RuntimeEntityType("Conversation", typeof(Conversation), false, null, null, null, Microsoft.EntityFrameworkCore.ChangeTrackingStrategy.Snapshot, null, false, null),
+                    conversation
+                    ));
+            });
+            DbMock.Setup(x => x.Messages.Add(It.IsAny<Message>())).Returns((Message message) =>
+            {
+                message.Id = Messages.Last().Id + 1;
+                Messages.Add(message);
+                return null;
+            });
         }
         delegate UserConsole AddUserConsole(UserConsole console);
     }
