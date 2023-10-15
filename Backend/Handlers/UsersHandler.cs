@@ -40,7 +40,7 @@ namespace Backend.Handlers
             {
                 _context.EmailConfirmationTokens.Remove(token);
             }
-            var item = await _context.EmailConfirmationTokens.AddAsync(new EmailConfirmationToken { UserId = user.Id, Token = await _userManager.GenerateEmailConfirmationTokenAsync(user) });
+            var item = _context.EmailConfirmationTokens.Add(new EmailConfirmationToken { UserId = user.Id, Token = await _userManager.GenerateEmailConfirmationTokenAsync(user) });
             await _context.SaveChangesAsync();
             token = await _context.EmailConfirmationTokens.Where(x => x.UserId == user.Id).FirstAsync();
 
@@ -48,7 +48,7 @@ namespace Backend.Handlers
             {
                 From = new MailAddress(_config.Value.Username),
                 Subject = "Account confirmation",
-                Body = $"<div>If you have not created this account, you can ignore this email.<br/>Your email confirmation link:<br/>http://localhost:3000/confirmEmail/{item.Entity.Token.Replace('/', '_')}</div>",
+                Body = $"<div>If you have not created this account, you can ignore this email.<br/>Your email confirmation link:<br/>http://localhost:3000/confirmEmail/{token.Token.Replace('/', '_')}</div>",
                 IsBodyHtml = true,
             };
             mailMessage.To.Add(_config.Value.TestEmail);
@@ -161,13 +161,13 @@ namespace Backend.Handlers
             {
                 _context.EmailChangeTokens.Remove(token);
             }
-            await _context.EmailChangeTokens.AddAsync(new EmailChangeToken { UserId = user.Id, Token = await _userManager.GenerateChangeEmailTokenAsync(user, newEmail), NewEmail = newEmail });
+            _context.EmailChangeTokens.Add(new EmailChangeToken { UserId = user.Id, Token = await _userManager.GenerateChangeEmailTokenAsync(user, newEmail), NewEmail = newEmail });
             await _context.SaveChangesAsync();
             token = await _context.EmailChangeTokens.Where(x => x.UserId == user.Id).FirstAsync();
 
             var mailMessage = new MailMessage
             {
-                From = new MailAddress("ispagrindai945@gmail.com"),
+                From = new MailAddress(_config.Value.Username),
                 Subject = "Email Change",
                 Body = $"<div>You have requested to change your email to {newEmail}. If you have not initiated this action, you can ignore this email.<br/>Your email change link:<br/>http://localhost:3000/changeEmail/{token.Token.Replace('/', '_')}</div>",
                 IsBodyHtml = true,

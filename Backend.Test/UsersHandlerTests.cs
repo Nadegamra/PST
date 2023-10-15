@@ -16,6 +16,7 @@ namespace Backend.Test
             var dbMock = mock.DbMock;
             var userManagerMock = UserManagerMock.MockUserManager(mock.Users);
             var configMock = new Mock<IOptions<SmtpConfig>>();
+            configMock.Setup(x => x.Value).Returns(_configData);
             var handler = new UsersHandler(userManagerMock.Object, dbMock.Object, configMock.Object);
             // Act
             var result = await handler.GetUsers(null);
@@ -36,9 +37,25 @@ namespace Backend.Test
             configMock.Setup(x => x.Value).Returns(_configData);
             var handler = new UsersHandler(userManagerMock.Object, dbMock.Object, configMock.Object);
             // Act
+            var actualResult = await handler.GenerateConfirmationEmail(mock.Users[2]);
+            var token = mock.EmailConfirmationTokens.Where(x => x.Id == 3).First();
+            var expectedResult = new MailMessage
+            {
+                From = new MailAddress(configMock.Object.Value.Username),
+                Subject = "Account confirmation",
+                Body = $"<div>If you have not created this account, you can ignore this email.<br/>Your email confirmation link:<br/>http://localhost:3000/confirmEmail/{token.Token.Replace('/', '_')}</div>",
+                IsBodyHtml = true,
+            };
+
+            expectedResult.To.Add(configMock.Object.Value.TestEmail);
 
             // Assert
-            Assert.Equal(1, 0);
+            Assert.Equal(JsonSerializer.Serialize(actualResult.From), JsonSerializer.Serialize(expectedResult.From));
+            Assert.Equal(JsonSerializer.Serialize(actualResult.To), JsonSerializer.Serialize(expectedResult.To));
+            Assert.Equal(actualResult.Subject, expectedResult.Subject);
+            Assert.Equal(actualResult.Body, expectedResult.Body);
+            Assert.Equal(actualResult.IsBodyHtml, expectedResult.IsBodyHtml);
+
         }
 
         [Fact]
@@ -49,6 +66,7 @@ namespace Backend.Test
             var dbMock = mock.DbMock;
             var userManagerMock = UserManagerMock.MockUserManager(mock.Users);
             var configMock = new Mock<IOptions<SmtpConfig>>();
+            configMock.Setup(x => x.Value).Returns(_configData);
             var handler = new UsersHandler(userManagerMock.Object, dbMock.Object, configMock.Object);
             // Act
             await handler.ConfirmEmail("confirmationToken2");
@@ -94,6 +112,7 @@ namespace Backend.Test
             var dbMock = mock.DbMock;
             var userManagerMock = UserManagerMock.MockUserManager(mock.Users);
             var configMock = new Mock<IOptions<SmtpConfig>>();
+            configMock.Setup(x => x.Value).Returns(_configData);
             var handler = new UsersHandler(userManagerMock.Object, dbMock.Object, configMock.Object);
             // Act
             await handler.ResetPassword("passwordResetToken1", "NewPassword");
@@ -112,6 +131,7 @@ namespace Backend.Test
             var dbMock = mock.DbMock;
             var userManagerMock = UserManagerMock.MockUserManager(mock.Users);
             var configMock = new Mock<IOptions<SmtpConfig>>();
+            configMock.Setup(x => x.Value).Returns(_configData);
             var handler = new UsersHandler(userManagerMock.Object, dbMock.Object, configMock.Object);
 
             var claims = new List<Claim>()
@@ -140,6 +160,7 @@ namespace Backend.Test
             var dbMock = mock.DbMock;
             var userManagerMock = UserManagerMock.MockUserManager(mock.Users);
             var configMock = new Mock<IOptions<SmtpConfig>>();
+            configMock.Setup(x => x.Value).Returns(_configData);
             var handler = new UsersHandler(userManagerMock.Object, dbMock.Object, configMock.Object);
             // Act
             var claims = new List<Claim>()
@@ -167,6 +188,7 @@ namespace Backend.Test
             var dbMock = mock.DbMock;
             var userManagerMock = UserManagerMock.MockUserManager(mock.Users);
             var configMock = new Mock<IOptions<SmtpConfig>>();
+            configMock.Setup(x => x.Value).Returns(_configData);
             var handler = new UsersHandler(userManagerMock.Object, dbMock.Object, configMock.Object);
             // Act
             var claims = new List<Claim>()
@@ -199,6 +221,7 @@ namespace Backend.Test
             var dbMock = mock.DbMock;
             var userManagerMock = UserManagerMock.MockUserManager(mock.Users);
             var configMock = new Mock<IOptions<SmtpConfig>>();
+            configMock.Setup(x => x.Value).Returns(_configData);
             var handler = new UsersHandler(userManagerMock.Object, dbMock.Object, configMock.Object);
             // Act
             var claims = new List<Claim>()
@@ -226,10 +249,31 @@ namespace Backend.Test
             var configMock = new Mock<IOptions<SmtpConfig>>();
             configMock.Setup(x => x.Value).Returns(_configData);
             var handler = new UsersHandler(userManagerMock.Object, dbMock.Object, configMock.Object);
+            var claims = new List<Claim>()
+            {
+                new Claim("UserId", "3")
+            };
+            var identity = new ClaimsIdentity(claims, "TestAuthType");
+            var claimsPrincipal = new ClaimsPrincipal(identity);
             // Act
+            string newEmail = "company@company.com";
+            var actualResult = await handler.GenerateEmailAddressChangeEmail(claimsPrincipal, newEmail);
+            var token = dbMock.Object.EmailChangeTokens.Where(x => x.Id == 3).First();
+            var expectedResult = new MailMessage
+            {
+                From = new MailAddress(_configData.Username),
+                Subject = "Email Change",
+                Body = $"<div>You have requested to change your email to {newEmail}. If you have not initiated this action, you can ignore this email.<br/>Your email change link:<br/>http://localhost:3000/changeEmail/{token.Token.Replace('/', '_')}</div>",
+                IsBodyHtml = true,
+            };
+            expectedResult.To.Add(_configData.TestEmail);
 
             // Assert
-            Assert.Equal(1, 0);
+            Assert.Equal(JsonSerializer.Serialize(actualResult.From), JsonSerializer.Serialize(expectedResult.From));
+            Assert.Equal(JsonSerializer.Serialize(actualResult.To), JsonSerializer.Serialize(expectedResult.To));
+            Assert.Equal(actualResult.Subject, expectedResult.Subject);
+            Assert.Equal(actualResult.Body, expectedResult.Body);
+            Assert.Equal(actualResult.IsBodyHtml, expectedResult.IsBodyHtml);
         }
         [Fact]
         public async void GetUnconfirmedEmailsTest()
@@ -239,6 +283,7 @@ namespace Backend.Test
             var dbMock = mock.DbMock;
             var userManagerMock = UserManagerMock.MockUserManager(mock.Users);
             var configMock = new Mock<IOptions<SmtpConfig>>();
+            configMock.Setup(x => x.Value).Returns(_configData);
             var handler = new UsersHandler(userManagerMock.Object, dbMock.Object, configMock.Object);
             // Act
             var claims = new List<Claim>()
@@ -261,11 +306,12 @@ namespace Backend.Test
             var dbMock = mock.DbMock;
             var userManagerMock = UserManagerMock.MockUserManager(mock.Users);
             var configMock = new Mock<IOptions<SmtpConfig>>();
+            configMock.Setup(x => x.Value).Returns(_configData);
             var handler = new UsersHandler(userManagerMock.Object, dbMock.Object, configMock.Object);
             // Act
             await handler.ChangeEmail("emailChangeToken2");
             // Assert
-            var updatedUser = dbMock.Object.Users.Where(x => x.Id == 3).First();
+            var updatedUser = dbMock.Object.Users.Where(x => x.Id == 4).First();
             Assert.Equal("owner@example.com", updatedUser.Email);
         }
     }

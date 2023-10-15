@@ -120,6 +120,14 @@ namespace Backend.Test.Mocks
             {
                 return "NewResetToken";
             });
+            mgr.Setup(x => x.GenerateChangeEmailTokenAsync(It.IsAny<User>(), It.IsAny<string>())).ReturnsAsync((User user, string newEmail) =>
+            {
+                return "NewChangeToken";
+            });
+            mgr.Setup(x => x.GenerateEmailConfirmationTokenAsync(It.IsAny<User>())).ReturnsAsync((User user) =>
+            {
+                return "NewConfirmationToken";
+            });
 
             return mgr;
         }

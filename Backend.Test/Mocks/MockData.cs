@@ -45,7 +45,7 @@ namespace Backend.Test.Mocks
         public static List<EmailChangeToken> EmailChangeTokens = new List<EmailChangeToken>
         {
             new EmailChangeToken {Id = 1, UserId = 2, NewEmail="gamer@example.com", Token="emailChangeToken1"},
-            new EmailChangeToken {Id = 2, UserId = 3, NewEmail="owner@example.com", Token="emailChangeToken2"},
+            new EmailChangeToken {Id = 2, UserId = 4, NewEmail="owner@example.com", Token="emailChangeToken2"},
         };
 
         public static List<Conversation> Conversations = new List<Conversation>
