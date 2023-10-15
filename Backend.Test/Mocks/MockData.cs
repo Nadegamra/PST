@@ -139,8 +139,9 @@ namespace Backend.Test.Mocks
 
         public static List<Data.Models.Console> Consoles = new List<Data.Models.Console> {
             new Data.Models.Console { Id = 1, Name = "Xbox One", Description = "Microsoft Xbox One", DailyPrice = 8, Images = Images.Where(x=>x.ConsoleId == 1).ToList() },
-            new Data.Models.Console { Id = 2, Name = "Playstation 5", Description = "Sony Playstation 5", DailyPrice = 9 , Images = Images.Where(x=>x.ConsoleId == 2).ToList() },
-            new Data.Models.Console { Id = 3, Name = "Switch", Description = "Nintendo Switch", DailyPrice = 7 , Images = Images.Where(x=>x.ConsoleId == 3).ToList() }
+            new Data.Models.Console { Id = 2, Name = "Playstation 5", Description = "Sony Playstation 5", DailyPrice = 9, Images = Images.Where(x=>x.ConsoleId == 2).ToList() },
+            new Data.Models.Console { Id = 3, Name = "Switch", Description = "Nintendo Switch", DailyPrice = 7, Images = Images.Where(x=>x.ConsoleId == 3).ToList() },
+            new Data.Models.Console { Id = 4, Name = "PSP", Description = "Playstation Portable", DailyPrice = 5, Images = Images.Where(x=>x.ConsoleId == 4).ToList()}
         };
 
         public static List<UserConsole> UserConsoles = new List<UserConsole> {
