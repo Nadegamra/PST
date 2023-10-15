@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using AutoMapper;
 using Backend.Data.Views.Console;
 using Backend.Data.Views.Image;
+using System.Reflection;
 
 namespace Backend.Handlers
 {
@@ -21,7 +22,7 @@ namespace Backend.Handlers
 
         public async Task<List<ConsoleGetDto>> GetConsolesAsync()
         {
-            return _mapper.Map<List<Data.Models.Console>,List<ConsoleGetDto>>(await _context.Consoles.Include(c => c.Images).ToListAsync());
+            return _mapper.Map<List<Data.Models.Console>, List<ConsoleGetDto>>(await _context.Consoles.Include(c => c.Images).ToListAsync());
         }
         public async Task<ConsoleGetDto> GetConsoleAsync(int id)
         {
@@ -57,8 +58,19 @@ namespace Backend.Handlers
             }
 
             // Update Console
-            Data.Models.Console console = _mapper.Map<ConsoleUpdateDto, Data.Models.Console>(consoleDto);
-            _context.Consoles.Update(console);
+            Data.Models.Console changes = _mapper.Map<ConsoleUpdateDto, Data.Models.Console>(consoleDto);
+
+            Data.Models.Console original = _context.Consoles.First(x => x.Id == changes.Id);
+            foreach (PropertyInfo info in original.GetType().GetProperties())
+            {
+                if (info.GetValue(changes) == null || info.Name == "Id")
+                {
+                    continue;
+                }
+                info.SetValue(original, info.GetValue(changes));
+            }
+
+            _context.Consoles.Update(original);
             await _context.SaveChangesAsync();
 
             Data.Models.Console result = _context.Consoles.Include(x => x.Images).Where(x => x.Id == consoleDto.Id).First();
@@ -66,9 +78,15 @@ namespace Backend.Handlers
         }
         public async Task RemoveConsoleAsync(int id)
         {
+            var userConsoles = _context.UserConsoles.FirstOrDefault(x => x.ConsoleId == id);
+            if (userConsoles is not null)
+            {
+                throw new InvalidOperationException("Can't delete: has associated UserConsoles");
+            }
+
             // Remove Images
-            List<int> imagesIds = (await _imagesHandler.GetConsoleImagesAsync(id)).Select(x=>x.Id).ToList();
-            foreach(int imageId in imagesIds)
+            List<int> imagesIds = (await _imagesHandler.GetConsoleImagesAsync(id)).Select(x => x.Id).ToList();
+            foreach (int imageId in imagesIds)
             {
                 await _imagesHandler.RemoveImageAsync(imageId);
             }
@@ -82,7 +100,7 @@ namespace Backend.Handlers
         }
         public bool CanDelete(int id)
         {
-            return !_context.UserConsoles.Where(x=>x.ConsoleId== id).Any();
+            return !_context.UserConsoles.Where(x => x.ConsoleId == id).Any();
         }
     }
 }
