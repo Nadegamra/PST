@@ -16,17 +16,21 @@ namespace Backend.Handlers
         private readonly AppDbContext _context;
         private readonly IMapper _mapper;
         private readonly IOptions<CloudinaryConfig> _config;
+        private readonly Cloudinary _cloudinary;
+        private readonly bool _disableCloudinary;
 
-        public FilesHandler(AppDbContext context, IMapper mapper, IOptions<CloudinaryConfig> config)
+        public FilesHandler(AppDbContext context, IMapper mapper, IOptions<CloudinaryConfig> config, bool disableCloudinary = false)
         {
             _context = context;
             _mapper = mapper;
             _config = config;
+            _cloudinary = new Cloudinary(new Account(_config.Value.Cloud, _config.Value.ApiKey, _config.Value.ApiSecret));
+            _disableCloudinary = disableCloudinary;
         }
 
         public async Task<List<ImageGetDto>> GetConsoleImagesAsync(int consoleId)
         {
-            return _mapper.Map<List<Image>,List<ImageGetDto>>(_context.Consoles.Include(x => x.Images).Where(x=>x.Id ==consoleId).First().Images.ToList());
+            return _mapper.Map<List<Image>, List<ImageGetDto>>(_context.Consoles.Include(x => x.Images).Where(x => x.Id == consoleId).First().Images.ToList());
         }
         public async Task<List<ImageGetDto>> GetUserConsoleImagesAsync(int consoleId)
         {
@@ -34,7 +38,7 @@ namespace Backend.Handlers
         }
         public async Task<ImageGetDto> GetImageAsync(int id)
         {
-            return _mapper.Map<Image,ImageGetDto>(_context.Images.Where(x => x.Id == id).First());
+            return _mapper.Map<Image, ImageGetDto>(_context.Images.Where(x => x.Id == id).First());
         }
         public async Task AddImageAsync(ImageAddDto imageDto)
         {
@@ -44,12 +48,20 @@ namespace Backend.Handlers
             var stream = new MemoryStream(bytes);
 
             //Cloudinary
-            var cloudinary = new Cloudinary(new Account(_config.Value.Cloud, _config.Value.ApiKey, _config.Value.ApiSecret));
             var uploadParams = new ImageUploadParams()
             {
                 File = new FileDescription("file.jpg", stream)
             };
-            var uploadResult = cloudinary.Upload(uploadParams);
+            ImageUploadResult uploadResult;
+            if (!_disableCloudinary)
+            {
+                uploadResult = _cloudinary.Upload(uploadParams);
+            }
+            else
+            {
+                uploadResult = new ImageUploadResult() { PublicId = "ImageId" };
+            }
+
 
 
             // Database
@@ -67,7 +79,7 @@ namespace Backend.Handlers
 
             image.Path = uploadResult.PublicId;
 
-            await _context.Images.AddAsync(image);
+            _context.Images.Add(image);
             await _context.SaveChangesAsync();
 
             return;
@@ -75,13 +87,13 @@ namespace Backend.Handlers
         public async Task<ImageGetDto> UpdateImageAsync(ImageUpdateDto imageDto)
         {
             // Database
-            Image image = _context.Images.Where(x=>x.Id == imageDto.Id).First();
+            Image image = _context.Images.Where(x => x.Id == imageDto.Id).First();
             image.Description = imageDto.Description;
             image.Name = imageDto.Name;
             _context.Images.Update(image);
             await _context.SaveChangesAsync();
 
-            return _mapper.Map<Image,ImageGetDto>(image);
+            return _mapper.Map<Image, ImageGetDto>(image);
         }
         public async Task<ImageGetDto> RemoveImageAsync(int id)
         {
@@ -103,18 +115,25 @@ namespace Backend.Handlers
             var stream = new MemoryStream(bytes);
 
             //Cloudinary
-            var cloudinary = new Cloudinary(new Account(_config.Value.Cloud, _config.Value.ApiKey, _config.Value.ApiSecret));
             var uploadParams = new ImageUploadParams()
             {
                 File = new FileDescription("file.jpg", stream)
             };
-            var uploadResult = cloudinary.Upload(uploadParams);
+            ImageUploadResult uploadResult;
+            if (!_disableCloudinary)
+            {
+                uploadResult = _cloudinary.Upload(uploadParams);
+            }
+            else
+            {
+                uploadResult = new ImageUploadResult() { PublicId = "ImageId" };
+            }
 
 
             // Database
             MessageFile file = new MessageFile { Name = fileDto.Name, Path = uploadResult.PublicId, Description = fileDto.Description, MessageId = fileDto.MessageId };
 
-            await _context.MessageFiles.AddAsync(file);
+            _context.MessageFiles.Add(file);
             await _context.SaveChangesAsync();
 
             return;
