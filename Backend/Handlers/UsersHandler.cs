@@ -33,14 +33,14 @@ namespace Backend.Handlers
             return (await _userManager.GetUsersInRoleAsync(roleName)).ToList();
         }
 
-        public async Task SendConfirmationEmail(User user)
+        public async Task<MailMessage> GenerateConfirmationEmail(User user)
         {
             EmailConfirmationToken? token = await _context.EmailConfirmationTokens.Where(x => x.UserId == user.Id).FirstOrDefaultAsync();
             if (token != null)
             {
                 _context.EmailConfirmationTokens.Remove(token);
             }
-            var item = await _context.EmailConfirmationTokens.AddAsync(new EmailConfirmationToken { UserId = user.Id, Token = await _userManager.GenerateEmailConfirmationTokenAsync(user) });
+            var item = _context.EmailConfirmationTokens.Add(new EmailConfirmationToken { UserId = user.Id, Token = await _userManager.GenerateEmailConfirmationTokenAsync(user) });
             await _context.SaveChangesAsync();
             token = await _context.EmailConfirmationTokens.Where(x => x.UserId == user.Id).FirstAsync();
 
@@ -48,19 +48,12 @@ namespace Backend.Handlers
             {
                 From = new MailAddress(_config.Value.Username),
                 Subject = "Account confirmation",
-                Body = $"<div>If you have not created this account, you can ignore this email.<br/>Your email confirmation link:<br/>http://localhost:3000/confirmEmail/{item.Entity.Token.Replace('/','_')}</div>",
+                Body = $"<div>If you have not created this account, you can ignore this email.<br/>Your email confirmation link:<br/>http://localhost:3000/confirmEmail/{token.Token.Replace('/', '_')}</div>",
                 IsBodyHtml = true,
             };
             mailMessage.To.Add(_config.Value.TestEmail);
 
-            var smtpClient = new SmtpClient("smtp.gmail.com")
-            {
-                Port = 587,
-                Credentials = new NetworkCredential(_config.Value.Username, _config.Value.Password),
-                EnableSsl = true,
-            };
-            smtpClient.Send(mailMessage);
-            return;
+            return mailMessage;
         }
 
         public async Task ConfirmEmail(string confirmationCode)
@@ -76,11 +69,12 @@ namespace Backend.Handlers
             await _context.SaveChangesAsync();
         }
 
-        public async Task SendPasswordResetEmail(string email)
+        public async Task<MailMessage> GeneratePasswordResetEmail(string email)
         {
             User user = await _userManager.FindByEmailAsync(email.ToUpper());
             if (user == null)
             {
+
                 throw new Exception("This email has no associated user");
             }
             PasswordResetToken? token = await _context.PasswordResetTokens.Where(x => x.UserId == user.Id).FirstOrDefaultAsync();
@@ -88,7 +82,7 @@ namespace Backend.Handlers
             {
                 _context.PasswordResetTokens.Remove(token);
             }
-            await _context.PasswordResetTokens.AddAsync(new PasswordResetToken { UserId = user.Id, Token = await _userManager.GeneratePasswordResetTokenAsync(user) });
+            _context.PasswordResetTokens.Add(new PasswordResetToken { UserId = user.Id, Token = await _userManager.GeneratePasswordResetTokenAsync(user) });
             await _context.SaveChangesAsync();
             token = await _context.PasswordResetTokens.Where(x => x.UserId == user.Id).FirstAsync();
 
@@ -100,14 +94,7 @@ namespace Backend.Handlers
                 IsBodyHtml = true,
             };
             mailMessage.To.Add(_config.Value.TestEmail);
-            var smtpClient = new SmtpClient("smtp.gmail.com")
-            {
-                Port = 587,
-                Credentials = new NetworkCredential(_config.Value.Username, _config.Value.Password),
-                EnableSsl = true,
-            };
-            smtpClient.Send(mailMessage);
-            return;
+            return mailMessage;
         }
 
         public async Task ResetPassword(string resetCode, string newPassword)
@@ -166,7 +153,7 @@ namespace Backend.Handlers
             }
         }
 
-        public async Task SendEmailAddressChangeEmail(ClaimsPrincipal userClaims, string newEmail)
+        public async Task<MailMessage> GenerateEmailAddressChangeEmail(ClaimsPrincipal userClaims, string newEmail)
         {
             User user = await _userManager.GetUserAsync(userClaims);
             EmailChangeToken? token = await _context.EmailChangeTokens.Where(x => x.UserId == user.Id).FirstOrDefaultAsync();
@@ -174,32 +161,25 @@ namespace Backend.Handlers
             {
                 _context.EmailChangeTokens.Remove(token);
             }
-            await _context.EmailChangeTokens.AddAsync(new EmailChangeToken { UserId = user.Id, Token = await _userManager.GenerateChangeEmailTokenAsync(user, newEmail), NewEmail = newEmail });
+            _context.EmailChangeTokens.Add(new EmailChangeToken { UserId = user.Id, Token = await _userManager.GenerateChangeEmailTokenAsync(user, newEmail), NewEmail = newEmail });
             await _context.SaveChangesAsync();
             token = await _context.EmailChangeTokens.Where(x => x.UserId == user.Id).FirstAsync();
 
             var mailMessage = new MailMessage
             {
-                From = new MailAddress("ispagrindai945@gmail.com"),
+                From = new MailAddress(_config.Value.Username),
                 Subject = "Email Change",
                 Body = $"<div>You have requested to change your email to {newEmail}. If you have not initiated this action, you can ignore this email.<br/>Your email change link:<br/>http://localhost:3000/changeEmail/{token.Token.Replace('/', '_')}</div>",
                 IsBodyHtml = true,
             };
             mailMessage.To.Add(_config.Value.TestEmail);// Replace with newEmail
-            var smtpClient = new SmtpClient("smtp.gmail.com")
-            {
-                Port = 587,
-                Credentials = new NetworkCredential("ispagrindai945@gmail.com", "rolczdktsktctrfq"),
-                EnableSsl = true,
-            };
-            smtpClient.Send(mailMessage);
-            return;
+            return mailMessage;
         }
 
         public async Task<List<string>> GetUnconfirmedEmails(ClaimsPrincipal userClaims)
         {
             User user = await _userManager.GetUserAsync(userClaims);
-            return _context.EmailChangeTokens.Select(x => x.NewEmail).ToList();
+            return _context.EmailChangeTokens.Where(x => x.UserId == user.Id).Select(x => x.NewEmail).ToList();
         }
 
         public async Task ChangeEmail(string token)

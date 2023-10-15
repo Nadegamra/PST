@@ -2,6 +2,7 @@
 using Backend.Data.Models;
 using Backend.Data.Views.User;
 using Backend.Handlers;
+using Backend.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
@@ -11,7 +12,7 @@ namespace Backend.Controllers
     [ApiController]
     [Route("[controller]")]
     [Authorize]
-    public class UsersController: ControllerBase
+    public class UsersController : ControllerBase
     {
         private readonly IMapper _mapper;
         private readonly UsersHandler _handler;
@@ -57,7 +58,8 @@ namespace Backend.Controllers
         {
             try
             {
-                await _handler.SendPasswordResetEmail(data.Email);
+                var message = await _handler.GeneratePasswordResetEmail(data.Email);
+                MailService.SendEmail(message);
                 return Ok();
             }
             catch (Exception e)
@@ -83,13 +85,14 @@ namespace Backend.Controllers
         }
 
         [HttpPut("account/physical/update")]
-        public async Task<ActionResult> UpdatePhysical([FromBody]UserPhysicalUpdate data)
+        public async Task<ActionResult> UpdatePhysical([FromBody] UserPhysicalUpdate data)
         {
             try
             {
                 await _handler.UpdatePhysical(User, data);
                 return Ok();
-            }catch(Exception e)
+            }
+            catch (Exception e)
             {
                 return BadRequest(e.Message);
             }
@@ -141,7 +144,8 @@ namespace Backend.Controllers
         {
             try
             {
-                await _handler.SendEmailAddressChangeEmail(User, data.NewEmail);
+                var message = await _handler.GenerateEmailAddressChangeEmail(User, data.NewEmail);
+                MailService.SendEmail(message);
                 return Ok();
             }
             catch (Exception e)
