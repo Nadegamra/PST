@@ -84,36 +84,11 @@ namespace Backend.Test.Mocks
             new MessageFile {Id = 8, MessageId = 11, Description="File description", Path="eud87dvnsd9vdv9dvns8", Name = "Pasirašyta_Sutartis.pdf"},
         };
 
-        public static List<Data.Models.Console> Consoles = new List<Data.Models.Console> {
-            new Data.Models.Console { Id = 1, Name = "Xbox One", Description = "Microsoft Xbox One", DailyPrice = 8 },
-            new Data.Models.Console { Id = 2, Name = "Playstation 5", Description = "Sony Playstation 5", DailyPrice = 9 },
-            new Data.Models.Console { Id = 3, Name = "Switch", Description = "Nintendo Switch", DailyPrice = 7 }
-        };
 
         public static List<Borrowing> Borrowings = new List<Borrowing> {
             new Borrowing { Id = 1, UserId = 3, Status = BorrowingStatus.ACTIVE },
             new Borrowing { Id = 2, UserId = 3, Status = BorrowingStatus.PENDING },
             new Borrowing { Id = 3, UserId = 4, Status = BorrowingStatus.ACTIVE }
-        };
-
-        public static List<UserConsole> UserConsoles = new List<UserConsole> {
-            new UserConsole { Id = 1, UserId = 2, ConsoleId = 1, Amount = 1, Accessories = "1 controller", ConsoleStatus = UserConsoleStatus.UNCONFIRMED },
-            new UserConsole { Id = 2, UserId = 2, ConsoleId = 2, Amount = 1, Accessories = "2 controllers", ConsoleStatus = UserConsoleStatus.AT_PLATFORM },
-            new UserConsole { Id = 3, UserId = 2, ConsoleId = 3, Amount = 3, Accessories = "Switch valdikliai", ConsoleStatus = UserConsoleStatus.AT_PLATFORM },
-            new UserConsole { Id = 4, UserId = 2, ConsoleId = 3, Amount = 2, Accessories = "Switch valdikliai", BorrowingId = 1, ConsoleStatus = UserConsoleStatus.AT_LENDER },
-            new UserConsole { Id = 5, UserId = 2, ConsoleId = 3, Amount = 1, Accessories = "Switch valdikliai", BorrowingId = 1, ConsoleStatus = UserConsoleStatus.AWAITING_TERMINATION_BY_LENDER },
-            new UserConsole { Id = 6, UserId = 2, ConsoleId = 3, Amount = 3, Accessories = "Switch valdikliai", BorrowingId = 1, ConsoleStatus = UserConsoleStatus.AT_LENDER },
-            new UserConsole { Id = 7, UserId = 2, ConsoleId = 3, Amount = 1, Accessories = "Switch valdikliai", ConsoleStatus = UserConsoleStatus.UNCONFIRMED },
-            new UserConsole { Id = 8, UserId = 2, ConsoleId = 1, Amount = 1, Accessories = "2 pulteliai", ConsoleStatus = UserConsoleStatus.AT_PLATFORM },
-            new UserConsole { Id = 9, UserId = 2, ConsoleId = 1, Amount = 1, Accessories = "3 pulteliai", BorrowingId = 2, ConsoleStatus = UserConsoleStatus.RESERVED },
-            new UserConsole { Id = 10, UserId = 2, ConsoleId = 1, Amount = 2, Accessories = "6 pulteliai", BorrowingId = 2, ConsoleStatus = UserConsoleStatus.RESERVED },
-            new UserConsole { Id = 11, UserId = 2, ConsoleId = 1, Amount = 3, Accessories = "9 pulteliai", BorrowingId = 2, ConsoleStatus = UserConsoleStatus.RESERVED },
-            new UserConsole { Id = 12, UserId = 2, ConsoleId = 1, Amount = 1, Accessories = "4 pulteliai", ConsoleStatus = UserConsoleStatus.AT_PLATFORM },
-            new UserConsole { Id = 13, UserId = 2, ConsoleId = 2, Amount = 1, Accessories = "2 pulteliai", ConsoleStatus = UserConsoleStatus.UNCONFIRMED },
-            new UserConsole { Id = 14, UserId = 2, ConsoleId = 2, Amount = 2, Accessories = "4 pulteliai", ConsoleStatus = UserConsoleStatus.AT_PLATFORM },
-            new UserConsole { Id = 15, UserId = 2, ConsoleId = 2, Amount = 3, Accessories = "6 pulteliai", BorrowingId = 3, ConsoleStatus = UserConsoleStatus.AT_LENDER },
-            new UserConsole { Id = 16, UserId = 2, ConsoleId = 2, Amount = 2, Accessories = "6 pulteliai", BorrowingId = 3, ConsoleStatus = UserConsoleStatus.AWAITING_TERMINATION_BY_BORROWER },
-            new UserConsole { Id = 17, UserId = 2, ConsoleId = 2, Amount = 1, Accessories = "3 pulteliai", BorrowingId = 3, ConsoleStatus = UserConsoleStatus.AT_LENDER }
         };
 
         public static List<Image> Images = new List<Image> {
@@ -162,5 +137,30 @@ namespace Backend.Test.Mocks
             new Image { Id = 43, Path = "mgrat1qyaks74xvuqfxl", Name = "10.jpg", Description = "", ConsoleId = null, UserConsoleId = 17 }
         };
 
+        public static List<Data.Models.Console> Consoles = new List<Data.Models.Console> {
+            new Data.Models.Console { Id = 1, Name = "Xbox One", Description = "Microsoft Xbox One", DailyPrice = 8, Images = Images.Where(x=>x.ConsoleId == 1).ToList() },
+            new Data.Models.Console { Id = 2, Name = "Playstation 5", Description = "Sony Playstation 5", DailyPrice = 9 , Images = Images.Where(x=>x.ConsoleId == 2).ToList() },
+            new Data.Models.Console { Id = 3, Name = "Switch", Description = "Nintendo Switch", DailyPrice = 7 , Images = Images.Where(x=>x.ConsoleId == 3).ToList() }
+        };
+
+        public static List<UserConsole> UserConsoles = new List<UserConsole> {
+            new UserConsole { Id = 1, UserId = 2, ConsoleId = 1, Amount = 1, Accessories = "1 controller", ConsoleStatus = UserConsoleStatus.UNCONFIRMED, Images = Images.Where(x=>x.UserConsoleId == 1).ToList()},
+            new UserConsole { Id = 2, UserId = 2, ConsoleId = 2, Amount = 1, Accessories = "2 controllers", ConsoleStatus = UserConsoleStatus.AT_PLATFORM, Images = Images.Where(x=>x.UserConsoleId == 2).ToList() },
+            new UserConsole { Id = 3, UserId = 2, ConsoleId = 3, Amount = 3, Accessories = "Switch valdikliai", ConsoleStatus = UserConsoleStatus.AT_PLATFORM, Images = Images.Where(x=>x.UserConsoleId == 3).ToList() },
+            new UserConsole { Id = 4, UserId = 2, ConsoleId = 3, Amount = 2, Accessories = "Switch valdikliai", BorrowingId = 1, ConsoleStatus = UserConsoleStatus.AT_LENDER, Images = Images.Where(x=>x.UserConsoleId == 4).ToList() },
+            new UserConsole { Id = 5, UserId = 2, ConsoleId = 3, Amount = 1, Accessories = "Switch valdikliai", BorrowingId = 1, ConsoleStatus = UserConsoleStatus.AWAITING_TERMINATION_BY_LENDER, Images = Images.Where(x=>x.UserConsoleId == 5).ToList() },
+            new UserConsole { Id = 6, UserId = 2, ConsoleId = 3, Amount = 3, Accessories = "Switch valdikliai", BorrowingId = 1, ConsoleStatus = UserConsoleStatus.AT_LENDER, Images = Images.Where(x=>x.UserConsoleId == 6).ToList() },
+            new UserConsole { Id = 7, UserId = 2, ConsoleId = 3, Amount = 1, Accessories = "Switch valdikliai", ConsoleStatus = UserConsoleStatus.UNCONFIRMED, Images = Images.Where(x=>x.UserConsoleId == 7).ToList() },
+            new UserConsole { Id = 8, UserId = 2, ConsoleId = 1, Amount = 1, Accessories = "2 pulteliai", ConsoleStatus = UserConsoleStatus.AT_PLATFORM, Images = Images.Where(x=>x.UserConsoleId == 8).ToList() },
+            new UserConsole { Id = 9, UserId = 2, ConsoleId = 1, Amount = 1, Accessories = "3 pulteliai", BorrowingId = 2, ConsoleStatus = UserConsoleStatus.RESERVED, Images = Images.Where(x=>x.UserConsoleId == 9).ToList() },
+            new UserConsole { Id = 10, UserId = 2, ConsoleId = 1, Amount = 2, Accessories = "6 pulteliai", BorrowingId = 2, ConsoleStatus = UserConsoleStatus.RESERVED, Images = Images.Where(x=>x.UserConsoleId == 10).ToList() },
+            new UserConsole { Id = 11, UserId = 2, ConsoleId = 1, Amount = 3, Accessories = "9 pulteliai", BorrowingId = 2, ConsoleStatus = UserConsoleStatus.RESERVED, Images = Images.Where(x=>x.UserConsoleId == 11).ToList() },
+            new UserConsole { Id = 12, UserId = 2, ConsoleId = 1, Amount = 1, Accessories = "4 pulteliai", ConsoleStatus = UserConsoleStatus.AT_PLATFORM, Images = Images.Where(x=>x.UserConsoleId == 12).ToList() },
+            new UserConsole { Id = 13, UserId = 2, ConsoleId = 2, Amount = 1, Accessories = "2 pulteliai", ConsoleStatus = UserConsoleStatus.UNCONFIRMED, Images = Images.Where(x=>x.UserConsoleId == 13).ToList() },
+            new UserConsole { Id = 14, UserId = 2, ConsoleId = 2, Amount = 2, Accessories = "4 pulteliai", ConsoleStatus = UserConsoleStatus.AT_PLATFORM, Images = Images.Where(x=>x.UserConsoleId == 14).ToList() },
+            new UserConsole { Id = 15, UserId = 2, ConsoleId = 2, Amount = 3, Accessories = "6 pulteliai", BorrowingId = 3, ConsoleStatus = UserConsoleStatus.AT_LENDER, Images = Images.Where(x=>x.UserConsoleId == 15).ToList() },
+            new UserConsole { Id = 16, UserId = 2, ConsoleId = 2, Amount = 2, Accessories = "6 pulteliai", BorrowingId = 3, ConsoleStatus = UserConsoleStatus.AWAITING_TERMINATION_BY_BORROWER, Images = Images.Where(x=>x.UserConsoleId == 16).ToList() },
+            new UserConsole { Id = 17, UserId = 2, ConsoleId = 2, Amount = 1, Accessories = "3 pulteliai", BorrowingId = 3, ConsoleStatus = UserConsoleStatus.AT_LENDER, Images = Images.Where(x=>x.UserConsoleId == 17).ToList() }
+        };
     }
 }

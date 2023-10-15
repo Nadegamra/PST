@@ -60,6 +60,12 @@ namespace Backend.Test.Mocks
                 EmailChangeTokens.Add(token);
                 return null;
             });
+            DbMock.Setup(x => x.Images.Add(It.IsAny<Image>())).Returns((Image image) =>
+            {
+                image.Id = Images.Last().Id + 1;
+                Images.Add(image);
+                return null;
+            });
         }
     }
 }
