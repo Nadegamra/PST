@@ -1,9 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 using Backend.Data.Views.Console;
 using Backend.Data.Views.Image;
 using Backend.Test.Mocks.Handlers;
@@ -15,11 +11,11 @@ namespace Backend.Test
         [Fact]
         public async void GetConsolesAsyncTest()
         {
-            // Act
+            // Arrange
             var dbMock = new DbContextMock();
             var handler = ConsolesHandlerMock.GetMock(dbMock);
             var mapper = AutomapperMock.GetMock();
-            // Arrange
+            // Act
             var actualResult = await handler.GetConsolesAsync();
             var expectedResult = mapper.Map<List<Data.Models.Console>, List<ConsoleGetDto>>(dbMock.Consoles);
             // Assert
@@ -28,11 +24,11 @@ namespace Backend.Test
         [Fact]
         public async void GetConsoleAsyncTest()
         {
-            // Act
+            // Arrange
             var dbMock = new DbContextMock();
             var handler = ConsolesHandlerMock.GetMock(dbMock);
             var mapper = AutomapperMock.GetMock();
-            // Arrange
+            // Act 
             var actualResult = await handler.GetConsoleAsync(2);
             var expectedResult = mapper.Map<Data.Models.Console, ConsoleGetDto>(dbMock.Consoles.First((x) => x.Id == 2));
             // Assert
@@ -41,11 +37,11 @@ namespace Backend.Test
         [Fact]
         public async void AddConsoleAsyncTest()
         {
-            // Act
+            // Arrange
             var dbMock = new DbContextMock();
             var handler = ConsolesHandlerMock.GetMock(dbMock);
             var mapper = AutomapperMock.GetMock();
-            // Arrange
+            // Act
             var images = new List<ImageAddDto>() { new ImageAddDto { Name = "name", Description = "description", Stream = Convert.ToBase64String(Encoding.UTF8.GetBytes("stream")) } };
             await handler.AddConsoleAsync(new ConsoleAddDto { Name = "addedName", DailyPrice = 6.99m, Description = "description123", Images = images });
             var actualResult = dbMock.Consoles.Last();
@@ -59,11 +55,11 @@ namespace Backend.Test
         [Fact]
         public async void UpdateConsoleAsyncTest()
         {
-            // Act
+            // Arrange
             var dbMock = new DbContextMock();
             var handler = ConsolesHandlerMock.GetMock(dbMock);
             var mapper = AutomapperMock.GetMock();
-            // Arrange
+            // Act
             await handler.UpdateConsoleAsync(new ConsoleUpdateDto { Id = 1, DailyPrice = 4.2m, Description = "newDescription", Name = "newName", Images = new List<ImageUpdateDto>() });
             var actualResult = dbMock.Consoles.Where(x => x.Id == 1).First();
             // Assert
@@ -74,11 +70,11 @@ namespace Backend.Test
         [Fact]
         public async void RemoveConsoleAsyncTest()
         {
-            // Act
+            // Arrange
             var dbMock = new DbContextMock();
             var handler = ConsolesHandlerMock.GetMock(dbMock);
             var mapper = AutomapperMock.GetMock();
-            // Arrange
+            // Act
             await handler.RemoveConsoleAsync(4);
             var deletedConsole = dbMock.Consoles.FirstOrDefault(x => x.Id == 4);
             // Assert
@@ -88,11 +84,11 @@ namespace Backend.Test
         [Fact]
         public async void CanDelete()
         {
-            // Act
+            // Arrange
             var dbMock = new DbContextMock();
             var handler = ConsolesHandlerMock.GetMock(dbMock);
             var mapper = AutomapperMock.GetMock();
-            // Arrange
+            // Act
             var res1 = handler.CanDelete(2);
             var res2 = handler.CanDelete(3);
             var res3 = handler.CanDelete(4);
