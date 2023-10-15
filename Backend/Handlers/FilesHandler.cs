@@ -133,7 +133,7 @@ namespace Backend.Handlers
             // Database
             MessageFile file = new MessageFile { Name = fileDto.Name, Path = uploadResult.PublicId, Description = fileDto.Description, MessageId = fileDto.MessageId };
 
-            await _context.MessageFiles.AddAsync(file);
+            _context.MessageFiles.Add(file);
             await _context.SaveChangesAsync();
 
             return;

@@ -66,6 +66,18 @@ namespace Backend.Test.Mocks
                 Images.Add(image);
                 return null;
             });
+            DbMock.Setup(x => x.Images.Remove(It.IsAny<Image>())).Returns((Image image) =>
+            {
+                int idx = Images.FindIndex(x => x.Id == image.Id);
+                Images.RemoveAt(idx);
+                return null;
+            });
+            DbMock.Setup(x => x.MessageFiles.Add(It.IsAny<MessageFile>())).Returns((MessageFile messageFile) =>
+            {
+                messageFile.Id = MessageFiles.Last().Id + 1;
+                MessageFiles.Add(messageFile);
+                return null;
+            });
         }
     }
 }

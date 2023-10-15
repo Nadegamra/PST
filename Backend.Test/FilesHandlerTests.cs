@@ -97,9 +97,11 @@ namespace Backend.Test
             configMock.Setup(x => x.Value).Returns(_configData);
             var handler = new FilesHandler(dbMock.Object, mapper, configMock.Object, true);
             // Act
-
+            await handler.UpdateImageAsync(new ImageUpdateDto { Id = 1, Name = "NewName", Description = "NewDescription" });
+            var updatedImage = mock.Images.Where(x => x.Id == 1).First();
             // Assert
-            Assert.Equal(1, 0);
+            Assert.Equal("NewName", updatedImage.Name);
+            Assert.Equal("NewDescription", updatedImage.Description);
         }
         [Fact]
         public async void RemoveImageAsyncTest()
@@ -114,9 +116,10 @@ namespace Backend.Test
             configMock.Setup(x => x.Value).Returns(_configData);
             var handler = new FilesHandler(dbMock.Object, mapper, configMock.Object, true);
             // Act
-
+            await handler.RemoveImageAsync(2);
+            var deletedImage = mock.Images.Where(x => x.Id == 2).FirstOrDefault();
             // Assert
-            Assert.Equal(1, 0);
+            Assert.Null(deletedImage);
         }
         [Fact]
         public async void AddMessageFileAsyncTest()
@@ -131,9 +134,12 @@ namespace Backend.Test
             configMock.Setup(x => x.Value).Returns(_configData);
             var handler = new FilesHandler(dbMock.Object, mapper, configMock.Object, true);
             // Act
-
+            await handler.AddMessageFileAsync(new Data.Views.MessageFile.MessageFileAddDto { MessageId = 1, Description = "desc", Name = "name", Stream = System.Convert.ToBase64String(Encoding.UTF8.GetBytes("stream")) });
+            var messageFile = mock.MessageFiles.Last();
             // Assert
-            Assert.Equal(1, 0);
+            Assert.Equal(1, messageFile.MessageId);
+            Assert.Equal("desc", messageFile.Description);
+            Assert.Equal("name", messageFile.Name);
         }
 
     }
