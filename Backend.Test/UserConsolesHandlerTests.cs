@@ -108,9 +108,11 @@ namespace Backend.Test
             var identity = new ClaimsIdentity(claims, "TestAuthType");
             var claimsPrincipal = new ClaimsPrincipal(identity);
             // Act
-
+            await handler.UpdateUserConsoleAsync(new UserConsoleUpdateDto { Id = 4, Accessories = "updated", Amount = 4, ConsoleId = 3, Images = new List<ImageUpdateDto>() });
+            var actualResult = dbMock.UserConsoles.Where(x => x.Id == 4).First();
             // Assert
-            Assert.Equal(1, 0);
+            Assert.Equal("updated", actualResult.Accessories);
+            Assert.Equal(4, actualResult.Amount);
         }
         [Fact]
         public async void RemoveUserConsoleAsyncTest()
@@ -126,9 +128,10 @@ namespace Backend.Test
             var identity = new ClaimsIdentity(claims, "TestAuthType");
             var claimsPrincipal = new ClaimsPrincipal(identity);
             // Act
-
+            await handler.RemoveUserConsoleAsync(6);
+            var actualResult = dbMock.UserConsoles.Where(x => x.Id == 6).FirstOrDefault();
             // Assert
-            Assert.Equal(1, 0);
+            Assert.Null(actualResult);
         }
         [Fact]
         public async void UpdateStatusTest()
@@ -139,14 +142,15 @@ namespace Backend.Test
             var handler = UserConsolesHandlerMock.GetMock(dbMock);
             var claims = new List<Claim>()
             {
-                new Claim("UserId", "2")
+                new Claim("UserId", "1")
             };
             var identity = new ClaimsIdentity(claims, "TestAuthType");
             var claimsPrincipal = new ClaimsPrincipal(identity);
             // Act
-
+            await handler.UpdateStatus(new UserConsoleStatusUpdateDto { Id = 1, ConsoleStatus = UserConsoleStatus.AT_PLATFORM }, claimsPrincipal);
+            var userConsole = dbMock.UserConsoles.Where(x => x.Id == 1).First();
             // Assert
-            Assert.Equal(1, 0);
+            Assert.Equal(UserConsoleStatus.AT_PLATFORM, userConsole.ConsoleStatus);
         }
     }
 }

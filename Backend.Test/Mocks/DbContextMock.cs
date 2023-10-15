@@ -74,7 +74,7 @@ namespace Backend.Test.Mocks
                 }
                 else if (image.ConsoleId != null)
                 {
-                    int idx = Consoles.FindIndex(x => x.Id == image.UserConsoleId);
+                    int idx = Consoles.FindIndex(x => x.Id == image.ConsoleId);
                     Consoles[idx].Images.Add(image);
                 }
                 return null;
@@ -103,6 +103,12 @@ namespace Backend.Test.Mocks
                     new RuntimeEntityType("UserConsole", typeof(UserConsole), false, null, null, null, Microsoft.EntityFrameworkCore.ChangeTrackingStrategy.Snapshot, null, false, null),
                     userConsole
                     ));
+            });
+            DbMock.Setup(x => x.UserConsoles.Remove(It.IsAny<UserConsole>())).Returns((UserConsole userConsole) =>
+            {
+                int idx = UserConsoles.FindIndex(x => x.Id == userConsole.Id);
+                UserConsoles.RemoveAt(idx);
+                return null;
             });
         }
         delegate UserConsole AddUserConsole(UserConsole console);

@@ -12,7 +12,7 @@ namespace Backend.Test.Mocks
         public static UsersHandler GetMock(DbContextMock mock)
         {
             var dbMock = mock.DbMock;
-            var userManagerMock = UserManagerMock.MockUserManager(mock.Users);
+            var userManagerMock = UserManagerMock.MockUserManager(mock.Users, mock.UserRoles, mock.Roles);
             var configMock = new Mock<IOptions<SmtpConfig>>();
             configMock.Setup(x => x.Value).Returns(ConfigData);
             var handler = new UsersHandler(userManagerMock.Object, dbMock.Object, configMock.Object);

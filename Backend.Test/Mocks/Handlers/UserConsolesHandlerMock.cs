@@ -8,7 +8,7 @@ namespace Backend.Test.Mocks.Handlers
         {
             IMapper mapper = AutomapperMock.GetMock();
             FilesHandler filesHandler = FilesHandlerMock.GetMock(dbMock);
-            var userManager = UserManagerMock.MockUserManager(dbMock.Users);
+            var userManager = UserManagerMock.MockUserManager(dbMock.Users, dbMock.UserRoles, dbMock.Roles);
             var handler = new UserConsolesHandler(mapper, filesHandler, dbMock.DbMock.Object, userManager.Object);
             return handler;
         }

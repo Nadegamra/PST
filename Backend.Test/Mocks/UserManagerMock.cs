@@ -6,16 +6,22 @@ namespace Backend.Test.Mocks
 {
     public class UserManagerMock
     {
-        public static Mock<UserManager<User>> MockUserManager(List<User> ls)
+        public static Mock<UserManager<User>> MockUserManager(List<User> users, List<IdentityUserRole<int>> userRoles, List<IdentityRole<int>> roles)
         {
             var store = new Mock<IUserStore<User>>();
             var mgr = new Mock<UserManager<User>>(store.Object, null, null, null, null, null, null, null, null);
             mgr.Object.UserValidators.Add(new UserValidator<User>());
             mgr.Object.PasswordValidators.Add(new PasswordValidator<User>());
             mgr.Setup(x => x.DeleteAsync(It.IsAny<User>())).ReturnsAsync(IdentityResult.Success);
-            mgr.Setup(x => x.CreateAsync(It.IsAny<User>(), It.IsAny<string>())).ReturnsAsync(IdentityResult.Success).Callback<User, string>((x, y) => ls.Add(x));
+            mgr.Setup(x => x.CreateAsync(It.IsAny<User>(), It.IsAny<string>())).ReturnsAsync(IdentityResult.Success).Callback<User, string>((x, y) => users.Add(x));
             mgr.Setup(x => x.UpdateAsync(It.IsAny<User>())).ReturnsAsync(IdentityResult.Success);
-            mgr.Setup(x => x.Users).Returns(ls.AsQueryable());
+            mgr.Setup(x => x.Users).Returns(users.AsQueryable());
+            mgr.Setup(x => x.GetRolesAsync(It.IsAny<User>())).ReturnsAsync((User user) =>
+            {
+                var roleIds = userRoles.Where(x => x.UserId == user.Id).Select(x => x.RoleId).ToList();
+                var roleList = roles.Where(x => roleIds.Contains(x.Id)).ToList();
+                return roleList.Select(x => x.Name).ToList();
+            });
             mgr.Setup(x => x.GetUsersInRoleAsync(It.IsAny<string>())).ReturnsAsync((string roleName) =>
             {
 
@@ -37,8 +43,8 @@ namespace Backend.Test.Mocks
                 }
                 if (confirmationToken.UserId == user.Id)
                 {
-                    int index = ls.FindIndex(x => x.Id == user.Id);
-                    ls[index].EmailConfirmed = true;
+                    int index = users.FindIndex(x => x.Id == user.Id);
+                    users[index].EmailConfirmed = true;
                     return IdentityResult.Success;
                 }
                 else
@@ -48,25 +54,25 @@ namespace Backend.Test.Mocks
             });
             mgr.Setup(x => x.FindByEmailAsync(It.IsAny<string>())).ReturnsAsync((string email) =>
             {
-                return ls.Where(x => x.Email.ToUpper() == email.ToUpper()).FirstOrDefault();
+                return users.Where(x => x.Email.ToUpper() == email.ToUpper()).FirstOrDefault();
             });
             mgr.Setup(x => x.FindByIdAsync(It.IsAny<string>())).ReturnsAsync((string id) =>
             {
-                return ls.Where(x => x.Id.ToString() == id).FirstOrDefault();
+                return users.Where(x => x.Id.ToString() == id).FirstOrDefault();
             });
             mgr.Setup(x => x.GetUserAsync(It.IsAny<ClaimsPrincipal>())).ReturnsAsync((ClaimsPrincipal userClaims) =>
             {
                 string id = userClaims.Claims.Where(x => x.Type == "UserId").First().Value;
-                return ls.Where(x => x.Id == int.Parse(id)).FirstOrDefault();
+                return users.Where(x => x.Id == int.Parse(id)).FirstOrDefault();
             });
             mgr.Setup(x => x.ChangePasswordAsync(It.IsAny<User>(), It.IsAny<string>(), It.IsAny<string>())).ReturnsAsync((User user, string currentPassword, string newPassword) =>
             {
                 string currentHash = currentPassword;
                 string newHash = newPassword;
-                int userIndex = ls.FindIndex(x => x.Id == user.Id);
+                int userIndex = users.FindIndex(x => x.Id == user.Id);
                 if (currentHash == user.PasswordHash)
                 {
-                    ls[userIndex].PasswordHash = newHash;
+                    users[userIndex].PasswordHash = newHash;
                     return IdentityResult.Success;
                 }
                 else
@@ -83,8 +89,8 @@ namespace Backend.Test.Mocks
                 }
                 if (changeToken.UserId == user.Id)
                 {
-                    int index = ls.FindIndex(x => x.Id == user.Id);
-                    ls[index].Email = newEmail;
+                    int index = users.FindIndex(x => x.Id == user.Id);
+                    users[index].Email = newEmail;
                     return IdentityResult.Success;
                 }
                 else
@@ -101,8 +107,8 @@ namespace Backend.Test.Mocks
                 }
                 if (resetToken.UserId == user.Id)
                 {
-                    int index = ls.FindIndex(x => x.Id == user.Id);
-                    ls[index].PasswordHash = newPassword;
+                    int index = users.FindIndex(x => x.Id == user.Id);
+                    users[index].PasswordHash = newPassword;
                     return IdentityResult.Success;
                 }
                 else
@@ -112,8 +118,8 @@ namespace Backend.Test.Mocks
             });
             mgr.Setup(x => x.UpdateAsync(It.IsAny<User>())).ReturnsAsync((User user) =>
             {
-                int index = ls.FindIndex(x => x.Id == user.Id);
-                ls[index] = user;
+                int index = users.FindIndex(x => x.Id == user.Id);
+                users[index] = user;
                 return IdentityResult.Success;
             });
             mgr.Setup(x => x.GeneratePasswordResetTokenAsync(It.IsAny<User>())).ReturnsAsync((User user) =>
