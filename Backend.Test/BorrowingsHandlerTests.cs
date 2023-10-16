@@ -7,6 +7,7 @@ using Backend.Test.Mocks.Handlers;
 using System.Security.Claims;
 using Backend.Data.Views.UserConsole;
 using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Backend.Test
 {
@@ -71,19 +72,22 @@ namespace Backend.Test
             var mapper = AutomapperMock.GetMock();
             var claims = new List<Claim>()
             {
-                new Claim("UserId", "2")
+                new Claim("UserId", "3")
             };
             var identity = new ClaimsIdentity(claims, "TestAuthType");
             var claimsPrincipal = new ClaimsPrincipal(identity);
+            var ids = new List<int> { 14, 8 };
             // Act
-            var ids = new List<int> { 6 };
             await handler.AddAsync(new BorrowingAddDto { UserConsoleIds = ids }, claimsPrincipal);
             var actualResult = dbMock.Borrowings.Last();
-            var updatedUserConsoles = dbMock.UserConsoles.Last();
             // Assert
-            Assert.Equal(2, actualResult.UserId);
+            Assert.Equal(3, actualResult.UserId);
             Assert.Equal(BorrowingStatus.PENDING, actualResult.Status);
-            Assert.Equal(updatedUserConsoles.BorrowingId, actualResult.Id);
+            foreach (int id in ids)
+            {
+                var updatedUserConsoles = dbMock.UserConsoles.Where(x => x.Id == id).First();
+                Assert.Equal(updatedUserConsoles.BorrowingId, actualResult.Id);
+            }
         }
 
 
@@ -94,11 +98,27 @@ namespace Backend.Test
             var dbMock = new DbContextMock();
             var handler = BorrowingsHandlerMock.GetMock(dbMock);
             var mapper = AutomapperMock.GetMock();
+            var claims = new List<Claim>()
+            {
+                new Claim("UserId", "3")
+            };
+            var identity = new ClaimsIdentity(claims, "TestAuthType");
+            var claimsPrincipal = new ClaimsPrincipal(identity);
+            var UserConsoleIds = new List<int> { 14, 8 };
             // Act
-            var actualResult = 1;
-            var expectedResult = 0;
+            await handler.UpdateAsync(new BorrowingUpdateDto { Id = 2, UserConsoleIds = UserConsoleIds }, claimsPrincipal);
+            var actualResult = dbMock.UserConsoles.Where(x => x.BorrowingId == 2).ToList();
             // Assert
-            Assert.Equal(JsonSerializer.Serialize(expectedResult), JsonSerializer.Serialize(actualResult));
+            foreach(UserConsole ar in actualResult)
+            {
+                Assert.Equal(UserConsoleStatus.AT_PLATFORM, ar.ConsoleStatus);
+            }
+
+            foreach (int id in UserConsoleIds)
+            {
+                var updatedUserConsoles = dbMock.UserConsoles.Where(x => x.Id == id).First();
+                Assert.Equal(UserConsoleStatus.AT_LENDER, updatedUserConsoles.ConsoleStatus);
+            }
         }
 
 
@@ -125,10 +145,13 @@ namespace Backend.Test
             var handler = BorrowingsHandlerMock.GetMock(dbMock);
             var mapper = AutomapperMock.GetMock();
             // Act
-            var actualResult = 1;
-            var expectedResult = 0;
+            await handler.DeleteAsync(3);
+            var deletedBorrowing = dbMock.Borrowings.FirstOrDefault(x => x.Id == 3);
+            var deletedConversation = dbMock.Conversations.FirstOrDefault(x => x.BorrowingId == 3);
             // Assert
-            Assert.Equal(JsonSerializer.Serialize(expectedResult), JsonSerializer.Serialize(actualResult));
+            Assert.Null(deletedBorrowing);
+            Assert.Null(deletedConversation);
+            await Assert.ThrowsAsync<InvalidOperationException>(async () => await handler.DeleteAsync(3));
         }
 
 
@@ -140,10 +163,13 @@ namespace Backend.Test
             var handler = BorrowingsHandlerMock.GetMock(dbMock);
             var mapper = AutomapperMock.GetMock();
             // Act
-            var actualResult = 1;
-            var expectedResult = 0;
+            var res1 = handler.CanDelete(2);
+            var res2 = handler.CanDelete(3);
+            var res3 = handler.CanDelete(4);
             // Assert
-            Assert.Equal(JsonSerializer.Serialize(expectedResult), JsonSerializer.Serialize(actualResult));
+            Assert.False(res1);
+            Assert.False(res2);
+            Assert.True(res3);
         }
 
     }

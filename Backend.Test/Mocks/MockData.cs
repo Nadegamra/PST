@@ -88,7 +88,8 @@ namespace Backend.Test.Mocks
         public static List<Borrowing> Borrowings = new List<Borrowing> {
             new Borrowing { Id = 1, UserId = 3, Status = BorrowingStatus.ACTIVE },
             new Borrowing { Id = 2, UserId = 3, Status = BorrowingStatus.PENDING },
-            new Borrowing { Id = 3, UserId = 4, Status = BorrowingStatus.ACTIVE }
+            new Borrowing { Id = 3, UserId = 4, Status = BorrowingStatus.ACTIVE },
+            new Borrowing { Id = 4, UserId = 4, Status = BorrowingStatus.PENDING }
         };
 
         public static List<Image> Images = new List<Image> {
