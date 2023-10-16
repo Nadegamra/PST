@@ -17,14 +17,16 @@ namespace Backend.Handlers
         private readonly IMapper _mapper;
         private readonly AppDbContext _context;
         private readonly UsersHandler _usersHandler;
+        private readonly bool _disableMail;
 
-        public AuthHandler(UserManager<User> userManager, SignInManager<User> signInManager, IMapper mapper, AppDbContext context, UsersHandler usersHandler)
+        public AuthHandler(UserManager<User> userManager, SignInManager<User> signInManager, IMapper mapper, AppDbContext context, UsersHandler usersHandler, bool disableMail = false)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _mapper = mapper;
             _context = context;
             _usersHandler = usersHandler;
+            _disableMail = disableMail;
         }
 
         private async Task<User> GetUser(UserLogin data)
@@ -91,7 +93,8 @@ namespace Backend.Handlers
                 await _userManager.AddToRoleAsync(user, "lender");
                 User createdUser = (await _userManager.FindByEmailAsync(user.Email!))!;
                 var message = await _usersHandler.GenerateConfirmationEmail(createdUser);
-                MailService.SendEmail(message);
+                if (!_disableMail)
+                    MailService.SendEmail(message);
                 return;
             }
             else
@@ -114,7 +117,8 @@ namespace Backend.Handlers
                 await _userManager.AddToRoleAsync(user, "lender");
                 User createdUser = await _userManager.FindByEmailAsync(user.Email);
                 var message = await _usersHandler.GenerateConfirmationEmail(createdUser);
-                MailService.SendEmail(message);
+                if (!_disableMail)
+                    MailService.SendEmail(message);
                 return;
             }
             else
@@ -132,7 +136,7 @@ namespace Backend.Handlers
         public async Task<RegistrationRequest> SubmitRegistrationRequest(RegistrationRequest request)
         {
             request.DateCreated = DateTime.Now;
-            var result = await _context.RegistrationRequests.AddAsync(request);
+            var result = _context.RegistrationRequests.Add(request);
 
             await _context.SaveChangesAsync();
 
@@ -179,7 +183,8 @@ namespace Backend.Handlers
                 await _userManager.AddToRoleAsync(user, "borrower");
                 User createdUser = await _userManager.FindByEmailAsync(user.Email);
                 var message = await _usersHandler.GenerateConfirmationEmail(createdUser);
-                MailService.SendEmail(message);
+                if (!_disableMail)
+                    MailService.SendEmail(message);
                 return;
             }
             else

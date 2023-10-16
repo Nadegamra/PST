@@ -8,18 +8,6 @@ namespace Backend.Test
     public class AuthHandlerTests
     {
         [Fact]
-        public async void GetUserTest()
-        {
-            // Arrange
-            var dbMock = new DbContextMock();
-            var handler = AuthHandlerMock.GetMock(dbMock);
-            var mapper = AutomapperMock.GetMock();
-            // Act
-
-            // Assert
-            Assert.Equal(1, 0);
-        }
-        [Fact]
         public async void LoginTest()
         {
             // Arrange
@@ -111,9 +99,10 @@ namespace Backend.Test
             var handler = AuthHandlerMock.GetMock(dbMock);
             var mapper = AutomapperMock.GetMock();
             // Act
-
+            var actualResult = await handler.GetRegistrationRequests();
+            var expectedResult = dbMock.RegistrationRequests;
             // Assert
-            Assert.Equal(1, 0);
+            Assert.Equal(JsonSerializer.Serialize(actualResult), JsonSerializer.Serialize(expectedResult));
         }
         [Fact]
         public async void SubmitRegistrationRequestTest()
@@ -123,9 +112,16 @@ namespace Backend.Test
             var handler = AuthHandlerMock.GetMock(dbMock);
             var mapper = AutomapperMock.GetMock();
             // Act
-
+            var request = new RegistrationRequest
+            {
+                CompanyCode = "739271",
+                CompanyName = "Yet another company",
+                Password = "Password123!"
+            };
+            await handler.SubmitRegistrationRequest(request);
+            var actualResult = dbMock.RegistrationRequests.Last();
             // Assert
-            Assert.Equal(1, 0);
+            Assert.Equal(JsonSerializer.Serialize(actualResult), JsonSerializer.Serialize(request));
         }
         [Fact]
         public async void ApproveRegistrationRequestTest()
@@ -135,10 +131,15 @@ namespace Backend.Test
             var handler = AuthHandlerMock.GetMock(dbMock);
             var mapper = AutomapperMock.GetMock();
             // Act
-
+            await handler.ApproveRegistrationRequest(new RegistrationRequestApproval { RequestId = 2, IsApproved = true });
+            await handler.ApproveRegistrationRequest(new RegistrationRequestApproval { RequestId = 3, IsApproved = false });
             // Assert
-            Assert.Equal(1, 0);
+            var addedUser = dbMock.Users.Last();
+            Assert.Equal(6, addedUser.Id);
+            Assert.Equal("Password245!", addedUser.PasswordHash);
+            Assert.False(addedUser.EmailConfirmed);
+            Assert.Null(dbMock.RegistrationRequests.FirstOrDefault(x => x.Id == 2));
+            Assert.Null(dbMock.RegistrationRequests.FirstOrDefault(x => x.Id == 3));
         }
-
     }
 }

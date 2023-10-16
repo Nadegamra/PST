@@ -15,7 +15,7 @@ namespace Backend.Test.Mocks.Handlers
             var userManager = UserManagerMock.MockUserManager(dbMock.Users, dbMock.UserRoles, dbMock.Roles);
             SignInManager<User> signInManager = SignInManagerMock.GetMock(userManager);
             UsersHandler usersHandler = UsersHandlerMock.GetMock(dbMock);
-            var handler = new AuthHandler(userManager.Object, signInManager, mapper, dbMock.DbMock.Object, usersHandler);
+            var handler = new AuthHandler(userManager.Object, signInManager, mapper, dbMock.DbMock.Object, usersHandler, true);
             return handler;
         }
     }
