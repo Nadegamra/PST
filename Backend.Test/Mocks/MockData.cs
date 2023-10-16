@@ -85,11 +85,6 @@ namespace Backend.Test.Mocks
         };
 
 
-        public static List<Borrowing> Borrowings = new List<Borrowing> {
-            new Borrowing { Id = 1, UserId = 3, Status = BorrowingStatus.ACTIVE },
-            new Borrowing { Id = 2, UserId = 3, Status = BorrowingStatus.PENDING },
-            new Borrowing { Id = 3, UserId = 4, Status = BorrowingStatus.ACTIVE }
-        };
 
         public static List<Image> Images = new List<Image> {
             new Image { Id = 1, Path = "gvoktfyvobny0j2umvtt", Name = "1.jpeg", Description = "", ConsoleId = 1, UserConsoleId = null },
@@ -162,6 +157,12 @@ namespace Backend.Test.Mocks
             new UserConsole { Id = 15, UserId = 2, ConsoleId = 2, Amount = 3, Accessories = "6 pulteliai", BorrowingId = 3, ConsoleStatus = UserConsoleStatus.AT_LENDER, Images = Images.Where(x=>x.UserConsoleId == 15).ToList() },
             new UserConsole { Id = 16, UserId = 2, ConsoleId = 2, Amount = 2, Accessories = "6 pulteliai", BorrowingId = 3, ConsoleStatus = UserConsoleStatus.AWAITING_TERMINATION_BY_BORROWER, Images = Images.Where(x=>x.UserConsoleId == 16).ToList() },
             new UserConsole { Id = 17, UserId = 2, ConsoleId = 2, Amount = 1, Accessories = "3 pulteliai", BorrowingId = 3, ConsoleStatus = UserConsoleStatus.AT_LENDER, Images = Images.Where(x=>x.UserConsoleId == 17).ToList() }
+        };
+        public static List<Borrowing> Borrowings = new List<Borrowing> {
+            new Borrowing { Id = 1, UserId = 3, Status = BorrowingStatus.ACTIVE, UserConsoles = UserConsoles.Where(x=>x.BorrowingId == 1).ToList() },
+            new Borrowing { Id = 2, UserId = 3, Status = BorrowingStatus.PENDING, UserConsoles = UserConsoles.Where(x=>x.BorrowingId == 2).ToList() },
+            new Borrowing { Id = 3, UserId = 4, Status = BorrowingStatus.ACTIVE, UserConsoles = UserConsoles.Where(x=>x.BorrowingId == 3).ToList() },
+            new Borrowing { Id = 4, UserId = 4, Status = BorrowingStatus.AWAITING_TERMINATION, UserConsoles = UserConsoles.Where(x=>x.BorrowingId == 4).ToList() },
         };
     }
 }
