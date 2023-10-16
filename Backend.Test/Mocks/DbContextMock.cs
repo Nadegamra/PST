@@ -1,5 +1,6 @@
 using System.Text.Json;
 using Backend.Data;
+using Backend.Data.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
@@ -147,6 +148,32 @@ namespace Backend.Test.Mocks
                 Messages.Add(message);
                 return null;
             });
+
+            DbMock.Setup(x => x.Borrowings.Add(It.IsAny<Borrowing>())).Returns((Borrowing borrowing) =>
+            {
+                borrowing.Id = Borrowings.Last().Id + 1;
+                Borrowings.Add(borrowing);
+
+                    return new EntityEntry<Borrowing>
+                (new InternalEntityEntry(
+                    new Mock<IStateManager>().Object,
+                    new RuntimeEntityType("Borrowing", typeof(Borrowing), false, null, null, null, Microsoft.EntityFrameworkCore.ChangeTrackingStrategy.Snapshot, null, false, null),
+                    borrowing
+                    ));
+            });
+            DbMock.Setup(x => x.Borrowings.Remove(It.IsAny<Borrowing>())).Returns((Borrowing borrowing) =>
+            {
+                int idx = Borrowings.FindIndex(x => x.Id == borrowing.Id);
+                Borrowings.RemoveAt(idx);
+                return null;
+            });
+            DbMock.Setup(x => x.Conversations.Remove(It.IsAny<Conversation>())).Returns((Conversation conversation) =>
+            {
+                int idx = Conversations.FindIndex(x => x.Id == conversation.Id);
+                Conversations.RemoveAt(idx);
+               return null;
+            });
+          
             DbMock.Setup(x => x.RegistrationRequests.Add(It.IsAny<RegistrationRequest>())).Returns((RegistrationRequest registrationRequest) =>
             {
                 registrationRequest.Id = RegistrationRequests.Last().Id + 1;
@@ -163,7 +190,7 @@ namespace Backend.Test.Mocks
             {
                 int idx = RegistrationRequests.FindIndex(x => x.Id == registrationRequest.Id);
                 RegistrationRequests.RemoveAt(idx);
-                return null;
+               return null;
             });
         }
         delegate UserConsole AddUserConsole(UserConsole console);
