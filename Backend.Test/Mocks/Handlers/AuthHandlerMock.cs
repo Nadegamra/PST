@@ -13,7 +13,7 @@ namespace Backend.Test.Mocks.Handlers
         {
             IMapper mapper = AutomapperMock.GetMock();
             var userManager = UserManagerMock.MockUserManager(dbMock.Users, dbMock.UserRoles, dbMock.Roles);
-            SignInManager<User> signInManager = SignInManagerMock.GetMock(userManager);
+            SignInManager<User> signInManager = SignInManagerMock.GetMock(userManager, dbMock.Users);
             UsersHandler usersHandler = UsersHandlerMock.GetMock(dbMock);
             var handler = new AuthHandler(userManager.Object, signInManager, mapper, dbMock.DbMock.Object, usersHandler, true);
             return handler;

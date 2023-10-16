@@ -15,21 +15,12 @@ namespace Backend.Test
             var handler = AuthHandlerMock.GetMock(dbMock);
             var mapper = AutomapperMock.GetMock();
             // Act
-
+            await handler.Login(new UserLogin { UserName = "admin@admin.com", Password = "Password" });
+            await handler.Login(new UserLogin { UserName = "company@example.com", Password = "Password" });
             // Assert
-            Assert.Equal(1, 0);
-        }
-        [Fact]
-        public async void LogoutTest()
-        {
-            // Arrange
-            var dbMock = new DbContextMock();
-            var handler = AuthHandlerMock.GetMock(dbMock);
-            var mapper = AutomapperMock.GetMock();
-            // Act
-
-            // Assert
-            Assert.Equal(1, 0);
+            await Assert.ThrowsAsync<ArgumentException>(async () => await handler.Login(new UserLogin { UserName = "admin@admin.com", Password = "Password123" }));
+            await Assert.ThrowsAsync<ArgumentException>(async () => await handler.Login(new UserLogin { UserName = "company@example.com", Password = "Password!" }));
+            await Assert.ThrowsAsync<ArgumentException>(async () => await handler.Login(new UserLogin { UserName = "company6@example.com", Password = "Password1" }));
         }
         [Fact]
         public async void GetProfileTest()
