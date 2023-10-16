@@ -134,6 +134,23 @@ namespace Backend.Test.Mocks
             {
                 return "NewConfirmationToken";
             });
+            mgr.Setup(x => x.AddToRoleAsync(It.IsAny<User>(), It.IsAny<string>())).ReturnsAsync((User user, string role) =>
+            {
+                int idx = users.FindIndex(x => x.Id == user.Id);
+                var roleId = roles.Where(x => x.Name.ToUpper() == role.ToUpper()).Select(x => x.Id).First();
+                userRoles.Add(new IdentityUserRole<int> { RoleId = roleId, UserId = user.Id });
+                return IdentityResult.Success;
+            });
+            mgr.Setup(x => x.CreateAsync(It.IsAny<User>(), It.IsAny<string>())).ReturnsAsync((User user, string password) =>
+            {
+                user.Id = users.Last().Id + 1;
+                user.PasswordHash = password;
+                user.NormalizedEmail = user.Email.ToUpper();
+                user.UserName = user.Email;
+                user.NormalizedUserName = user.UserName.ToUpper();
+                users.Add(user);
+                return IdentityResult.Success;
+            });
 
             return mgr;
         }

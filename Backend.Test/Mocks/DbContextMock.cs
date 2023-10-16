@@ -147,6 +147,24 @@ namespace Backend.Test.Mocks
                 Messages.Add(message);
                 return null;
             });
+            DbMock.Setup(x => x.RegistrationRequests.Add(It.IsAny<RegistrationRequest>())).Returns((RegistrationRequest registrationRequest) =>
+            {
+                registrationRequest.Id = RegistrationRequests.Last().Id + 1;
+                RegistrationRequests.Add(registrationRequest);
+
+                return new EntityEntry<RegistrationRequest>
+                (new InternalEntityEntry(
+                    new Mock<IStateManager>().Object,
+                    new RuntimeEntityType("RegistrationRequest", typeof(RegistrationRequest), false, null, null, null, Microsoft.EntityFrameworkCore.ChangeTrackingStrategy.Snapshot, null, false, null),
+                    registrationRequest
+                    ));
+            });
+            DbMock.Setup(x => x.RegistrationRequests.Remove(It.IsAny<RegistrationRequest>())).Returns((RegistrationRequest registrationRequest) =>
+            {
+                int idx = RegistrationRequests.FindIndex(x => x.Id == registrationRequest.Id);
+                RegistrationRequests.RemoveAt(idx);
+                return null;
+            });
         }
         delegate UserConsole AddUserConsole(UserConsole console);
     }
