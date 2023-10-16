@@ -8,6 +8,7 @@ using System.Security.Claims;
 using Backend.Data.Views.UserConsole;
 using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Test
 {
@@ -100,7 +101,7 @@ namespace Backend.Test
             var mapper = AutomapperMock.GetMock();
             var claims = new List<Claim>()
             {
-                new Claim("UserId", "3")
+                new Claim("UserId", "1")
             };
             var identity = new ClaimsIdentity(claims, "TestAuthType");
             var claimsPrincipal = new ClaimsPrincipal(identity);
@@ -110,14 +111,12 @@ namespace Backend.Test
             var actualResult = dbMock.UserConsoles.Where(x => x.BorrowingId == 2).ToList();
             // Assert
             foreach(UserConsole ar in actualResult)
-            {
                 Assert.Equal(UserConsoleStatus.AT_PLATFORM, ar.ConsoleStatus);
-            }
 
             foreach (int id in UserConsoleIds)
             {
-                var updatedUserConsoles = dbMock.UserConsoles.Where(x => x.Id == id).First();
-                Assert.Equal(UserConsoleStatus.AT_LENDER, updatedUserConsoles.ConsoleStatus);
+                var updatedUserConsole = dbMock.UserConsoles.Where(x => x.Id == id).First();
+                Assert.Equal(UserConsoleStatus.AT_LENDER, updatedUserConsole.ConsoleStatus);
             }
         }
 
@@ -132,8 +131,11 @@ namespace Backend.Test
             // Act
             await handler.UpdateStatusAsync(new BorrowingUpdateStatusDto{ Id = 2, BorrowingStatus = BorrowingStatus.ACTIVE });
             var borrowing = dbMock.Borrowings.Where(x => x.Id == 2).First();
+            var updatedUserConsoles = dbMock.UserConsoles.Where(x => x.BorrowingId == 2).ToList();
             // Assert
             Assert.Equal(BorrowingStatus.ACTIVE, borrowing.Status);
+            foreach (UserConsole userConsole in updatedUserConsoles)
+                Assert.Equal(UserConsoleStatus.AT_LENDER, userConsole.ConsoleStatus);
         }
 
 

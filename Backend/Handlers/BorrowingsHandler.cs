@@ -6,6 +6,7 @@ using Backend.Data.Views.BorrowedConsole;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 using Backend.Data.Views.UserConsole;
+using Backend.Data.Migrations;
 
 namespace Backend.Handlers
 {
@@ -69,11 +70,12 @@ namespace Backend.Handlers
 
         public async Task UpdateAsync(BorrowingUpdateDto updateDto, ClaimsPrincipal userClaims)
         {
-            var borrowing = await _context.Borrowings.Where(x=>x.Id == updateDto.Id).Include(x=>x.UserConsoles).FirstAsync();
+            //var borrowing = await _context.Borrowings.Where(x=>x.Id == updateDto.Id).Include(x=>x.UserConsoles).FirstAsync();
+            //var originalUserConsoleIds = borrowing.UserConsoles.Select(x=>x.Id).ToList();
 
-            var originalUserConsoleIds = borrowing.UserConsoles.Select(x=>x.Id).ToList();
+            var originalUserConsoleIds = await _context.UserConsoles.Where(x => x.BorrowingId == updateDto.Id).Select(x => x.Id).ToListAsync();
 
-            foreach(var id in originalUserConsoleIds)
+            foreach (var id in originalUserConsoleIds)
             {
                 await _userConsolesHandler.UpdateStatus(new UserConsoleStatusUpdateDto { Id = id, ConsoleStatus = UserConsoleStatus.AT_PLATFORM }, userClaims);
             }
@@ -85,8 +87,7 @@ namespace Backend.Handlers
         }
         public async Task UpdateStatusAsync(BorrowingUpdateStatusDto statusDto)
         {
-
-            var userConsoles = _context.Borrowings.Include(x => x.UserConsoles).Where(x => x.Id == statusDto.Id).First().UserConsoles;
+            var userConsoles = await _context.UserConsoles.Where(x => x.BorrowingId == statusDto.Id).ToListAsync();
 
             async Task UpdateUserConsole(int userConsoleId, UserConsoleStatus status)
             {
@@ -98,7 +99,7 @@ namespace Backend.Handlers
                 await _context.SaveChangesAsync();
             }
 
-            var borrowing = await _context.Borrowings.Where(x=>x.Id == statusDto.Id).FirstAsync();
+            var borrowing = await _context.Borrowings.Where(x => x.Id == statusDto.Id).FirstAsync();
             borrowing.Status = statusDto.BorrowingStatus;
             await _context.SaveChangesAsync();
 
