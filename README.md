@@ -41,3 +41,8 @@
 - Admin: Username='admin@admin.com' Password='Password123!'
 - Customer: Username='customer@example.com' Password='Password123!'
 - Company: Username='company@example.com' Password='Password123!'
+
+
+### Testing
+## Generating test coverage report
+Execute `dotnet test --collect:"XPlat Code Coverage"` command from `Backend.Test` directory

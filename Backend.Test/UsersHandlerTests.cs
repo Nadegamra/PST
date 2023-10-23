@@ -179,7 +179,7 @@ namespace Backend.Test
             Assert.Equal("Code", updatedUser.PostalCode);
         }
         [Fact]
-        public async void ChangePasswordTest1()
+        public async void ChangePasswordTest()
         {
             // Arrange
             var dbMock = new DbContextMock();
