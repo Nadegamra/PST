@@ -9,7 +9,7 @@ namespace Backend.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class ChatsController: ControllerBase
+    public class ChatsController : ControllerBase
     {
         private readonly ChatsHandler _handler;
 
@@ -25,7 +25,8 @@ namespace Backend.Controllers
             try
             {
                 return await _handler.GetAllConversations();
-            } catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }

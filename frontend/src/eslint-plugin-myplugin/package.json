@@ -1,0 +1,7 @@
+{
+  "name": "eslint-plugin-myplugin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "private": true
+}

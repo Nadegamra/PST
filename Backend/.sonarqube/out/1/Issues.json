@@ -1,0 +1,2686 @@
+{
+  "$schema": "http://json.schemastore.org/sarif-1.0.0",
+  "version": "1.0.0",
+  "runs": [
+    {
+      "tool": {
+        "name": "Microsoft (R) Visual C# Compiler",
+        "version": "4.7.0.0",
+        "fileVersion": "4.7.0-3.23465.3 (b5c9211b)",
+        "semanticVersion": "4.7.0",
+        "language": "en-US"
+      },
+      "results": [
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable property 'Cloud' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Properties/CloudinaryConfig.cs",
+                "region": {
+                  "startLine": 5,
+                  "startColumn": 23,
+                  "endLine": 5,
+                  "endColumn": 28
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Properties/CloudinaryConfig.cs",
+                "region": {
+                  "startLine": 5,
+                  "startColumn": 23,
+                  "endLine": 5,
+                  "endColumn": 28
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable property 'ApiKey' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Properties/CloudinaryConfig.cs",
+                "region": {
+                  "startLine": 6,
+                  "startColumn": 23,
+                  "endLine": 6,
+                  "endColumn": 29
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Properties/CloudinaryConfig.cs",
+                "region": {
+                  "startLine": 6,
+                  "startColumn": 23,
+                  "endLine": 6,
+                  "endColumn": 29
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable property 'ApiSecret' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Properties/CloudinaryConfig.cs",
+                "region": {
+                  "startLine": 7,
+                  "startColumn": 23,
+                  "endLine": 7,
+                  "endColumn": 32
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Properties/CloudinaryConfig.cs",
+                "region": {
+                  "startLine": 7,
+                  "startColumn": 23,
+                  "endLine": 7,
+                  "endColumn": 32
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable property 'Username' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Properties/SmtpConfig.cs",
+                "region": {
+                  "startLine": 5,
+                  "startColumn": 23,
+                  "endLine": 5,
+                  "endColumn": 31
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Properties/SmtpConfig.cs",
+                "region": {
+                  "startLine": 5,
+                  "startColumn": 23,
+                  "endLine": 5,
+                  "endColumn": 31
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable property 'Password' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Properties/SmtpConfig.cs",
+                "region": {
+                  "startLine": 6,
+                  "startColumn": 23,
+                  "endLine": 6,
+                  "endColumn": 31
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Properties/SmtpConfig.cs",
+                "region": {
+                  "startLine": 6,
+                  "startColumn": 23,
+                  "endLine": 6,
+                  "endColumn": 31
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable property 'TestEmail' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Properties/SmtpConfig.cs",
+                "region": {
+                  "startLine": 7,
+                  "startColumn": 23,
+                  "endLine": 7,
+                  "endColumn": 32
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Properties/SmtpConfig.cs",
+                "region": {
+                  "startLine": 7,
+                  "startColumn": 23,
+                  "endLine": 7,
+                  "endColumn": 32
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable field '_imagesHandler' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Controllers/UserConsolesController.cs",
+                "region": {
+                  "startLine": 19,
+                  "startColumn": 16,
+                  "endLine": 19,
+                  "endColumn": 38
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Controllers/UserConsolesController.cs",
+                "region": {
+                  "startLine": 17,
+                  "startColumn": 39,
+                  "endLine": 17,
+                  "endColumn": 53
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8600",
+          "level": "warning",
+          "message": "Converting null literal or possible null value to non-nullable type.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/AuthHandler.cs",
+                "region": {
+                  "startLine": 35,
+                  "startColumn": 61,
+                  "endLine": 35,
+                  "endColumn": 62
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8603",
+          "level": "warning",
+          "message": "Possible null reference return.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/AuthHandler.cs",
+                "region": {
+                  "startLine": 35,
+                  "startColumn": 20,
+                  "endLine": 37,
+                  "endColumn": 66
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8602",
+          "level": "warning",
+          "message": "Dereference of a possibly null reference.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Controllers/ConsolesController.cs",
+                "region": {
+                  "startLine": 69,
+                  "startColumn": 35,
+                  "endLine": 69,
+                  "endColumn": 52
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8602",
+          "level": "warning",
+          "message": "Dereference of a possibly null reference.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Controllers/UserConsolesController.cs",
+                "region": {
+                  "startLine": 85,
+                  "startColumn": 35,
+                  "endLine": 85,
+                  "endColumn": 52
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Controllers/ConsolesController.cs",
+                "region": {
+                  "startLine": 90,
+                  "startColumn": 47,
+                  "endLine": 90,
+                  "endColumn": 56
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8600",
+          "level": "warning",
+          "message": "Converting null literal or possible null value to non-nullable type.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/UserConsolesHandler.cs",
+                "region": {
+                  "startLine": 30,
+                  "startColumn": 25,
+                  "endLine": 30,
+                  "endColumn": 64
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8602",
+          "level": "warning",
+          "message": "Dereference of a possibly null reference.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/UserConsolesHandler.cs",
+                "region": {
+                  "startLine": 31,
+                  "startColumn": 197,
+                  "endLine": 31,
+                  "endColumn": 201
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8603",
+          "level": "warning",
+          "message": "Possible null reference return.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/AuthHandler.cs",
+                "region": {
+                  "startLine": 75,
+                  "startColumn": 24,
+                  "endLine": 75,
+                  "endColumn": 28
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8602",
+          "level": "warning",
+          "message": "Dereference of a possibly null reference.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Controllers/ChatsController.cs",
+                "region": {
+                  "startLine": 112,
+                  "startColumn": 35,
+                  "endLine": 112,
+                  "endColumn": 52
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8604",
+          "level": "warning",
+          "message": "Possible null reference argument for parameter 'source' in 'List<Image> Enumerable.ToList<Image>(IEnumerable<Image> source)'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/FilesHandler.cs",
+                "region": {
+                  "startLine": 33,
+                  "startColumn": 64,
+                  "endLine": 33,
+                  "endColumn": 149
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/FilesHandler.cs",
+                "region": {
+                  "startLine": 31,
+                  "startColumn": 46,
+                  "endLine": 31,
+                  "endColumn": 67
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8600",
+          "level": "warning",
+          "message": "Converting null literal or possible null value to non-nullable type.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/UserConsolesHandler.cs",
+                "region": {
+                  "startLine": 35,
+                  "startColumn": 25,
+                  "endLine": 35,
+                  "endColumn": 64
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8604",
+          "level": "warning",
+          "message": "Possible null reference argument for parameter 'source' in 'List<Image> Enumerable.ToList<Image>(IEnumerable<Image> source)'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/FilesHandler.cs",
+                "region": {
+                  "startLine": 37,
+                  "startColumn": 64,
+                  "endLine": 37,
+                  "endColumn": 153
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/FilesHandler.cs",
+                "region": {
+                  "startLine": 35,
+                  "startColumn": 46,
+                  "endLine": 35,
+                  "endColumn": 71
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Controllers/BorrowingsController.cs",
+                "region": {
+                  "startLine": 118,
+                  "startColumn": 47,
+                  "endLine": 118,
+                  "endColumn": 56
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8600",
+          "level": "warning",
+          "message": "Converting null literal or possible null value to non-nullable type.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/BorrowingsHandler.cs",
+                "region": {
+                  "startLine": 34,
+                  "startColumn": 25,
+                  "endLine": 34,
+                  "endColumn": 68
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8602",
+          "level": "warning",
+          "message": "Dereference of a possibly null reference.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/BorrowingsHandler.cs",
+                "region": {
+                  "startLine": 35,
+                  "startColumn": 232,
+                  "endLine": 35,
+                  "endColumn": 236
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/FilesHandler.cs",
+                "region": {
+                  "startLine": 39,
+                  "startColumn": 40,
+                  "endLine": 39,
+                  "endColumn": 53
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8604",
+          "level": "warning",
+          "message": "Possible null reference argument for parameter 'email' in 'Task<User?> UserManager<User>.FindByEmailAsync(string email)'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/AuthHandler.cs",
+                "region": {
+                  "startLine": 118,
+                  "startColumn": 72,
+                  "endLine": 118,
+                  "endColumn": 82
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8600",
+          "level": "warning",
+          "message": "Converting null literal or possible null value to non-nullable type.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/AuthHandler.cs",
+                "region": {
+                  "startLine": 118,
+                  "startColumn": 36,
+                  "endLine": 118,
+                  "endColumn": 83
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8604",
+          "level": "warning",
+          "message": "Possible null reference argument for parameter 'user' in 'Task<MailMessage> UsersHandler.GenerateConfirmationEmail(User user)'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/AuthHandler.cs",
+                "region": {
+                  "startLine": 119,
+                  "startColumn": 77,
+                  "endLine": 119,
+                  "endColumn": 88
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/UserConsolesHandler.cs",
+                "region": {
+                  "startLine": 38,
+                  "startColumn": 46,
+                  "endLine": 38,
+                  "endColumn": 65
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/AuthHandler.cs",
+                "region": {
+                  "startLine": 131,
+                  "startColumn": 54,
+                  "endLine": 131,
+                  "endColumn": 77
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8600",
+          "level": "warning",
+          "message": "Converting null literal or possible null value to non-nullable type.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Program.cs",
+                "region": {
+                  "startLine": 58,
+                  "startColumn": 31,
+                  "endLine": 58,
+                  "endColumn": 93
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8602",
+          "level": "warning",
+          "message": "Dereference of a possibly null reference.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/UserConsolesHandler.cs",
+                "region": {
+                  "startLine": 52,
+                  "startColumn": 34,
+                  "endLine": 52,
+                  "endColumn": 38
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8604",
+          "level": "warning",
+          "message": "Possible null reference argument for parameter 'email' in 'Task<User?> UserManager<User>.FindByEmailAsync(string email)'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/AuthHandler.cs",
+                "region": {
+                  "startLine": 184,
+                  "startColumn": 72,
+                  "endLine": 184,
+                  "endColumn": 82
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8600",
+          "level": "warning",
+          "message": "Converting null literal or possible null value to non-nullable type.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/AuthHandler.cs",
+                "region": {
+                  "startLine": 184,
+                  "startColumn": 36,
+                  "endLine": 184,
+                  "endColumn": 83
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8604",
+          "level": "warning",
+          "message": "Possible null reference argument for parameter 'user' in 'Task<MailMessage> UsersHandler.GenerateConfirmationEmail(User user)'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/AuthHandler.cs",
+                "region": {
+                  "startLine": 185,
+                  "startColumn": 77,
+                  "endLine": 185,
+                  "endColumn": 88
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8600",
+          "level": "warning",
+          "message": "Converting null literal or possible null value to non-nullable type.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/UsersHandler.cs",
+                "region": {
+                  "startLine": 74,
+                  "startColumn": 25,
+                  "endLine": 74,
+                  "endColumn": 77
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8600",
+          "level": "warning",
+          "message": "Converting null literal or possible null value to non-nullable type.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/BorrowingsHandler.cs",
+                "region": {
+                  "startLine": 43,
+                  "startColumn": 25,
+                  "endLine": 43,
+                  "endColumn": 68
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8602",
+          "level": "warning",
+          "message": "Dereference of a possibly null reference.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/BorrowingsHandler.cs",
+                "region": {
+                  "startLine": 45,
+                  "startColumn": 75,
+                  "endLine": 45,
+                  "endColumn": 79
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8604",
+          "level": "warning",
+          "message": "Possible null reference argument for parameter 'userId' in 'Task<User?> UserManager<User>.FindByIdAsync(string userId)'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/UsersHandler.cs",
+                "region": {
+                  "startLine": 107,
+                  "startColumn": 58,
+                  "endLine": 107,
+                  "endColumn": 81
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8600",
+          "level": "warning",
+          "message": "Converting null literal or possible null value to non-nullable type.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/UsersHandler.cs",
+                "region": {
+                  "startLine": 107,
+                  "startColumn": 25,
+                  "endLine": 107,
+                  "endColumn": 82
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8604",
+          "level": "warning",
+          "message": "Possible null reference argument for parameter 'user' in 'Task<IdentityResult> UserManager<User>.ResetPasswordAsync(User user, string token, string newPassword)'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/UsersHandler.cs",
+                "region": {
+                  "startLine": 108,
+                  "startColumn": 51,
+                  "endLine": 108,
+                  "endColumn": 55
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8600",
+          "level": "warning",
+          "message": "Converting null literal or possible null value to non-nullable type.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/UsersHandler.cs",
+                "region": {
+                  "startLine": 115,
+                  "startColumn": 29,
+                  "endLine": 115,
+                  "endColumn": 72
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8602",
+          "level": "warning",
+          "message": "Dereference of a possibly null reference.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/UsersHandler.cs",
+                "region": {
+                  "startLine": 116,
+                  "startColumn": 13,
+                  "endLine": 116,
+                  "endColumn": 21
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8600",
+          "level": "warning",
+          "message": "Converting null literal or possible null value to non-nullable type.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/UsersHandler.cs",
+                "region": {
+                  "startLine": 125,
+                  "startColumn": 29,
+                  "endLine": 125,
+                  "endColumn": 72
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8602",
+          "level": "warning",
+          "message": "Dereference of a possibly null reference.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/UsersHandler.cs",
+                "region": {
+                  "startLine": 126,
+                  "startColumn": 13,
+                  "endLine": 126,
+                  "endColumn": 21
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8600",
+          "level": "warning",
+          "message": "Converting null literal or possible null value to non-nullable type.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/UsersHandler.cs",
+                "region": {
+                  "startLine": 135,
+                  "startColumn": 29,
+                  "endLine": 135,
+                  "endColumn": 72
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8602",
+          "level": "warning",
+          "message": "Dereference of a possibly null reference.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/UsersHandler.cs",
+                "region": {
+                  "startLine": 136,
+                  "startColumn": 13,
+                  "endLine": 136,
+                  "endColumn": 21
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8604",
+          "level": "warning",
+          "message": "Possible null reference argument for parameter 'user' in 'Task<IList<string>> UserManager<User>.GetRolesAsync(User user)'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/UserConsolesHandler.cs",
+                "region": {
+                  "startLine": 128,
+                  "startColumn": 58,
+                  "endLine": 128,
+                  "endColumn": 62
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8600",
+          "level": "warning",
+          "message": "Converting null literal or possible null value to non-nullable type.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/UsersHandler.cs",
+                "region": {
+                  "startLine": 148,
+                  "startColumn": 25,
+                  "endLine": 148,
+                  "endColumn": 68
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8604",
+          "level": "warning",
+          "message": "Possible null reference argument for parameter 'user' in 'Task<IdentityResult> UserManager<User>.ChangePasswordAsync(User user, string currentPassword, string newPassword)'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/UsersHandler.cs",
+                "region": {
+                  "startLine": 149,
+                  "startColumn": 65,
+                  "endLine": 149,
+                  "endColumn": 69
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8602",
+          "level": "warning",
+          "message": "Dereference of a possibly null reference.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/ChatsHandler.cs",
+                "region": {
+                  "startLine": 36,
+                  "startColumn": 79,
+                  "endLine": 36,
+                  "endColumn": 83
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8600",
+          "level": "warning",
+          "message": "Converting null literal or possible null value to non-nullable type.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/UsersHandler.cs",
+                "region": {
+                  "startLine": 158,
+                  "startColumn": 25,
+                  "endLine": 158,
+                  "endColumn": 68
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8602",
+          "level": "warning",
+          "message": "Dereference of a possibly null reference.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/UsersHandler.cs",
+                "region": {
+                  "startLine": 159,
+                  "startColumn": 95,
+                  "endLine": 159,
+                  "endColumn": 99
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8602",
+          "level": "warning",
+          "message": "Dereference of a possibly null reference.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/UsersHandler.cs",
+                "region": {
+                  "startLine": 164,
+                  "startColumn": 76,
+                  "endLine": 164,
+                  "endColumn": 80
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8600",
+          "level": "warning",
+          "message": "Converting null literal or possible null value to non-nullable type.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/UsersHandler.cs",
+                "region": {
+                  "startLine": 181,
+                  "startColumn": 25,
+                  "endLine": 181,
+                  "endColumn": 68
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8602",
+          "level": "warning",
+          "message": "Dereference of a possibly null reference.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/UsersHandler.cs",
+                "region": {
+                  "startLine": 182,
+                  "startColumn": 70,
+                  "endLine": 182,
+                  "endColumn": 74
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8604",
+          "level": "warning",
+          "message": "Possible null reference argument for parameter 'userId' in 'Task<User?> UserManager<User>.FindByIdAsync(string userId)'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/UsersHandler.cs",
+                "region": {
+                  "startLine": 192,
+                  "startColumn": 58,
+                  "endLine": 192,
+                  "endColumn": 84
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8600",
+          "level": "warning",
+          "message": "Converting null literal or possible null value to non-nullable type.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/UsersHandler.cs",
+                "region": {
+                  "startLine": 192,
+                  "startColumn": 25,
+                  "endLine": 192,
+                  "endColumn": 85
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8604",
+          "level": "warning",
+          "message": "Possible null reference argument for parameter 'user' in 'Task<IdentityResult> UserManager<User>.ChangeEmailAsync(User user, string newEmail, string token)'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/UsersHandler.cs",
+                "region": {
+                  "startLine": 193,
+                  "startColumn": 62,
+                  "endLine": 193,
+                  "endColumn": 66
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8602",
+          "level": "warning",
+          "message": "Dereference of a possibly null reference.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/ChatsHandler.cs",
+                "region": {
+                  "startLine": 43,
+                  "startColumn": 75,
+                  "endLine": 43,
+                  "endColumn": 79
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8604",
+          "level": "warning",
+          "message": "Possible null reference argument for parameter 'source' in 'ConversationGetDto IMapperBase.Map<Conversation, ConversationGetDto>(Conversation source)'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/ChatsHandler.cs",
+                "region": {
+                  "startLine": 50,
+                  "startColumn": 66,
+                  "endLine": 50,
+                  "endColumn": 330
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8604",
+          "level": "warning",
+          "message": "Possible null reference argument for parameter 'user' in 'Task<IList<string>> UserManager<User>.GetRolesAsync(User user)'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/ChatsHandler.cs",
+                "region": {
+                  "startLine": 87,
+                  "startColumn": 58,
+                  "endLine": 87,
+                  "endColumn": 62
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8625",
+          "level": "warning",
+          "message": "Cannot convert null literal to non-nullable reference type.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/ChatsHandler.cs",
+                "region": {
+                  "startLine": 90,
+                  "startColumn": 28,
+                  "endLine": 90,
+                  "endColumn": 32
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS0649",
+          "level": "warning",
+          "message": "Field 'UserConsolesController._imagesHandler' is never assigned to, and will always have its default value null",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Controllers/UserConsolesController.cs",
+                "region": {
+                  "startLine": 17,
+                  "startColumn": 39,
+                  "endLine": 17,
+                  "endColumn": 53
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "S125",
+          "level": "warning",
+          "message": "Remove this commented out code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/BorrowingsHandler.cs",
+                "region": {
+                  "startLine": 73,
+                  "startColumn": 13,
+                  "endLine": 73,
+                  "endColumn": 128
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S125",
+          "level": "warning",
+          "message": "Remove this commented out code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/FilesHandler.cs",
+                "region": {
+                  "startLine": 102,
+                  "startColumn": 13,
+                  "endLine": 102,
+                  "endColumn": 128
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S3459",
+          "level": "warning",
+          "message": "Remove unassigned field '_imagesHandler', or set its value.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Controllers/UserConsolesController.cs",
+                "region": {
+                  "startLine": 17,
+                  "startColumn": 39,
+                  "endLine": 17,
+                  "endColumn": 53
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2068",
+          "level": "warning",
+          "message": "\"password\" detected here, make sure this is not a hard-coded credential.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/appsettings.json",
+                "region": {
+                  "startLine": 3,
+                  "startColumn": 27,
+                  "endLine": 3,
+                  "endColumn": 102
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S4487",
+          "level": "warning",
+          "message": "Remove this unread private field '_userManager' or refactor the code to use its value.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Controllers/AuthController.cs",
+                "region": {
+                  "startLine": 16,
+                  "startColumn": 44,
+                  "endLine": 16,
+                  "endColumn": 56
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S4487",
+          "level": "warning",
+          "message": "Remove this unread private field '_mapper' or refactor the code to use its value.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Controllers/AuthController.cs",
+                "region": {
+                  "startLine": 17,
+                  "startColumn": 34,
+                  "endLine": 17,
+                  "endColumn": 41
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1450",
+          "level": "warning",
+          "message": "Remove the field '_config' and declare it as a local variable in the relevant methods.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/FilesHandler.cs",
+                "region": {
+                  "startLine": 18,
+                  "startColumn": 53,
+                  "endLine": 18,
+                  "endColumn": 60
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2068",
+          "level": "warning",
+          "message": "Please review this hard-coded password.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Services/MailService.cs",
+                "region": {
+                  "startLine": 17,
+                  "startColumn": 31,
+                  "endLine": 17,
+                  "endColumn": 100
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2971",
+          "level": "warning",
+          "message": "Drop this useless call to 'ToList' or replace it by 'AsEnumerable' if you are using LINQ to Entities.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/ChatsHandler.cs",
+                "region": {
+                  "startLine": 31,
+                  "startColumn": 126,
+                  "endLine": 31,
+                  "endColumn": 132
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S3626",
+          "level": "warning",
+          "message": "Remove this redundant jump.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/AuthHandler.cs",
+                "region": {
+                  "startLine": 122,
+                  "startColumn": 17,
+                  "endLine": 122,
+                  "endColumn": 24
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S3626",
+          "level": "warning",
+          "message": "Remove this redundant jump.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/FilesHandler.cs",
+                "region": {
+                  "startLine": 85,
+                  "startColumn": 13,
+                  "endLine": 85,
+                  "endColumn": 20
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6608",
+          "level": "warning",
+          "message": "Indexing at 0 should be used instead of the \"Enumerable\" extension method \"First\"",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/AuthHandler.cs",
+                "region": {
+                  "startLine": 59,
+                  "startColumn": 69,
+                  "endLine": 59,
+                  "endColumn": 74
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6608",
+          "level": "warning",
+          "message": "Indexing at 0 should be used instead of the \"Enumerable\" extension method \"First\"",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/AuthHandler.cs",
+                "region": {
+                  "startLine": 79,
+                  "startColumn": 69,
+                  "endLine": 79,
+                  "endColumn": 74
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S3928",
+          "level": "warning",
+          "message": "The parameter name 'Request with this id does not exist' is not declared in the argument list.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/AuthHandler.cs",
+                "region": {
+                  "startLine": 151,
+                  "startColumn": 23,
+                  "endLine": 151,
+                  "endColumn": 93
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S112",
+          "level": "warning",
+          "message": "'System.Exception' should not be thrown by user code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/AuthHandler.cs",
+                "region": {
+                  "startLine": 127,
+                  "startColumn": 23,
+                  "endLine": 127,
+                  "endColumn": 44
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1481",
+          "level": "warning",
+          "message": "Remove the unused local variable 'user'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/UserConsolesHandler.cs",
+                "region": {
+                  "startLine": 35,
+                  "startColumn": 18,
+                  "endLine": 35,
+                  "endColumn": 22
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S112",
+          "level": "warning",
+          "message": "'System.Exception' should not be thrown by user code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/AuthHandler.cs",
+                "region": {
+                  "startLine": 103,
+                  "startColumn": 23,
+                  "endLine": 103,
+                  "endColumn": 44
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1199",
+          "level": "warning",
+          "message": "Extract this nested code block into a separate method.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Program.cs",
+                "region": {
+                  "startLine": 12,
+                  "startColumn": 1,
+                  "endLine": 12,
+                  "endColumn": 2
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S3626",
+          "level": "warning",
+          "message": "Remove this redundant jump.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/AuthHandler.cs",
+                "region": {
+                  "startLine": 188,
+                  "startColumn": 17,
+                  "endLine": 188,
+                  "endColumn": 24
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S3626",
+          "level": "warning",
+          "message": "Remove this redundant jump.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/FilesHandler.cs",
+                "region": {
+                  "startLine": 139,
+                  "startColumn": 13,
+                  "endLine": 139,
+                  "endColumn": 20
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1481",
+          "level": "warning",
+          "message": "Remove the unused local variable 'item'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/UsersHandler.cs",
+                "region": {
+                  "startLine": 43,
+                  "startColumn": 17,
+                  "endLine": 43,
+                  "endColumn": 21
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S112",
+          "level": "warning",
+          "message": "'System.Exception' should not be thrown by user code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/UsersHandler.cs",
+                "region": {
+                  "startLine": 64,
+                  "startColumn": 23,
+                  "endLine": 64,
+                  "endColumn": 85
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S3626",
+          "level": "warning",
+          "message": "Remove this redundant jump.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/UsersHandler.cs",
+                "region": {
+                  "startLine": 120,
+                  "startColumn": 13,
+                  "endLine": 120,
+                  "endColumn": 20
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S3626",
+          "level": "warning",
+          "message": "Remove this redundant jump.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/UserConsolesHandler.cs",
+                "region": {
+                  "startLine": 122,
+                  "startColumn": 13,
+                  "endLine": 122,
+                  "endColumn": 20
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S112",
+          "level": "warning",
+          "message": "'System.Exception' should not be thrown by user code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/AuthHandler.cs",
+                "region": {
+                  "startLine": 171,
+                  "startColumn": 23,
+                  "endLine": 171,
+                  "endColumn": 48
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S3626",
+          "level": "warning",
+          "message": "Remove this redundant jump.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/UsersHandler.cs",
+                "region": {
+                  "startLine": 130,
+                  "startColumn": 13,
+                  "endLine": 130,
+                  "endColumn": 20
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA2208",
+          "level": "note",
+          "message": "Method ApproveRegistrationRequest passes 'Request with this id does not exist' as the paramName argument to a ArgumentOutOfRangeException constructor. Replace this argument with one of the method's parameter names. Note that the provided parameter name should have the exact casing as declared on the method.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/AuthHandler.cs",
+                "region": {
+                  "startLine": 151,
+                  "startColumn": 23,
+                  "endLine": 151,
+                  "endColumn": 93
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2971",
+          "level": "warning",
+          "message": "Drop this useless call to 'ToList' or replace it by 'AsEnumerable' if you are using LINQ to Entities.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/ChatsHandler.cs",
+                "region": {
+                  "startLine": 38,
+                  "startColumn": 126,
+                  "endLine": 38,
+                  "endColumn": 132
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S112",
+          "level": "warning",
+          "message": "'System.Exception' should not be thrown by user code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/UsersHandler.cs",
+                "region": {
+                  "startLine": 78,
+                  "startColumn": 23,
+                  "endLine": 78,
+                  "endColumn": 73
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S3626",
+          "level": "warning",
+          "message": "Remove this redundant jump.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/UsersHandler.cs",
+                "region": {
+                  "startLine": 143,
+                  "startColumn": 13,
+                  "endLine": 143,
+                  "endColumn": 20
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S3626",
+          "level": "warning",
+          "message": "Remove this redundant jump.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/UserConsolesHandler.cs",
+                "region": {
+                  "startLine": 158,
+                  "startColumn": 13,
+                  "endLine": 158,
+                  "endColumn": 20
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S112",
+          "level": "warning",
+          "message": "'System.Exception' should not be thrown by user code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/AuthHandler.cs",
+                "region": {
+                  "startLine": 193,
+                  "startColumn": 23,
+                  "endLine": 193,
+                  "endColumn": 44
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2971",
+          "level": "warning",
+          "message": "Drop this useless call to 'ToList' or replace it by 'AsEnumerable' if you are using LINQ to Entities.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/ChatsHandler.cs",
+                "region": {
+                  "startLine": 45,
+                  "startColumn": 126,
+                  "endLine": 45,
+                  "endColumn": 132
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S112",
+          "level": "warning",
+          "message": "'System.Exception' should not be thrown by user code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/UsersHandler.cs",
+                "region": {
+                  "startLine": 105,
+                  "startColumn": 23,
+                  "endLine": 105,
+                  "endColumn": 86
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S112",
+          "level": "warning",
+          "message": "'System.Exception' should not be thrown by user code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/UserConsolesHandler.cs",
+                "region": {
+                  "startLine": 137,
+                  "startColumn": 23,
+                  "endLine": 137,
+                  "endColumn": 54
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S112",
+          "level": "warning",
+          "message": "'System.Exception' should not be thrown by user code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/UserConsolesHandler.cs",
+                "region": {
+                  "startLine": 142,
+                  "startColumn": 23,
+                  "endLine": 142,
+                  "endColumn": 54
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S112",
+          "level": "warning",
+          "message": "'System.Exception' should not be thrown by user code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/UserConsolesHandler.cs",
+                "region": {
+                  "startLine": 147,
+                  "startColumn": 23,
+                  "endLine": 147,
+                  "endColumn": 54
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6608",
+          "level": "warning",
+          "message": "Indexing at 0 should be used instead of the \"Enumerable\" extension method \"First\"",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/UserConsolesHandler.cs",
+                "region": {
+                  "startLine": 128,
+                  "startColumn": 65,
+                  "endLine": 128,
+                  "endColumn": 70
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S112",
+          "level": "warning",
+          "message": "'System.Exception' should not be thrown by user code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/UsersHandler.cs",
+                "region": {
+                  "startLine": 152,
+                  "startColumn": 23,
+                  "endLine": 152,
+                  "endColumn": 71
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S3626",
+          "level": "warning",
+          "message": "Remove this redundant jump.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/ChatsHandler.cs",
+                "region": {
+                  "startLine": 66,
+                  "startColumn": 13,
+                  "endLine": 66,
+                  "endColumn": 20
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S112",
+          "level": "warning",
+          "message": "'System.Exception' should not be thrown by user code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/UsersHandler.cs",
+                "region": {
+                  "startLine": 190,
+                  "startColumn": 23,
+                  "endLine": 190,
+                  "endColumn": 62
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S112",
+          "level": "warning",
+          "message": "'System.Exception' should not be thrown by user code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/UsersHandler.cs",
+                "region": {
+                  "startLine": 196,
+                  "startColumn": 23,
+                  "endLine": 196,
+                  "endColumn": 71
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S3626",
+          "level": "warning",
+          "message": "Remove this redundant jump.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/karolis/Github/Univeras/7-semestras/Program%C5%B3%20Sistem%C5%B3%20Testavimas/PST/Backend/Handlers/ChatsHandler.cs",
+                "region": {
+                  "startLine": 82,
+                  "startColumn": 13,
+                  "endLine": 82,
+                  "endColumn": 20
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        }
+      ],
+      "rules": {
+        "CA2208": {
+          "id": "CA2208",
+          "shortDescription": "Instantiate argument exceptions correctly",
+          "fullDescription": "A call is made to the default (parameterless) constructor of an exception type that is or derives from ArgumentException, or an incorrect string argument is passed to a parameterized constructor of an exception type that is or derives from ArgumentException.",
+          "defaultLevel": "note",
+          "helpUri": "https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca2208",
+          "properties": {
+            "category": "Usage",
+            "isEnabledByDefault": true,
+            "tags": [
+              "PortedFromFxCop",
+              "Telemetry",
+              "EnabledRuleInAggressiveMode"
+            ]
+          }
+        },
+        "CS0649": {
+          "id": "CS0649",
+          "shortDescription": "Field is never assigned to, and will always have its default value",
+          "defaultLevel": "warning",
+          "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS0649)",
+          "properties": {
+            "category": "Compiler",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Compiler",
+              "Telemetry"
+            ]
+          }
+        },
+        "CS1998": {
+          "id": "CS1998",
+          "shortDescription": "Async method lacks 'await' operators and will run synchronously",
+          "defaultLevel": "warning",
+          "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS1998)",
+          "properties": {
+            "category": "Compiler",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Compiler",
+              "Telemetry"
+            ]
+          }
+        },
+        "CS8600": {
+          "id": "CS8600",
+          "shortDescription": "Converting null literal or possible null value to non-nullable type.",
+          "defaultLevel": "warning",
+          "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS8600)",
+          "properties": {
+            "category": "Compiler",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Compiler",
+              "Telemetry"
+            ]
+          }
+        },
+        "CS8602": {
+          "id": "CS8602",
+          "shortDescription": "Dereference of a possibly null reference.",
+          "defaultLevel": "warning",
+          "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS8602)",
+          "properties": {
+            "category": "Compiler",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Compiler",
+              "Telemetry"
+            ]
+          }
+        },
+        "CS8603": {
+          "id": "CS8603",
+          "shortDescription": "Possible null reference return.",
+          "defaultLevel": "warning",
+          "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS8603)",
+          "properties": {
+            "category": "Compiler",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Compiler",
+              "Telemetry"
+            ]
+          }
+        },
+        "CS8604": {
+          "id": "CS8604",
+          "shortDescription": "Possible null reference argument.",
+          "defaultLevel": "warning",
+          "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS8604)",
+          "properties": {
+            "category": "Compiler",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Compiler",
+              "Telemetry"
+            ]
+          }
+        },
+        "CS8618": {
+          "id": "CS8618",
+          "shortDescription": "Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.",
+          "defaultLevel": "warning",
+          "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS8618)",
+          "properties": {
+            "category": "Compiler",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Compiler",
+              "Telemetry"
+            ]
+          }
+        },
+        "CS8625": {
+          "id": "CS8625",
+          "shortDescription": "Cannot convert null literal to non-nullable reference type.",
+          "defaultLevel": "warning",
+          "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS8625)",
+          "properties": {
+            "category": "Compiler",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Compiler",
+              "Telemetry"
+            ]
+          }
+        },
+        "S112": {
+          "id": "S112",
+          "shortDescription": "General or reserved exceptions should never be thrown",
+          "fullDescription": "This rule raises an issue when a general or reserved exception is thrown.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-112",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S1199": {
+          "id": "S1199",
+          "shortDescription": "Nested code blocks should not be used",
+          "fullDescription": "Nested code blocks create new scopes where variables declared within are inaccessible from the outside, and their lifespan ends with the block.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1199",
+          "properties": {
+            "category": "Minor Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S125": {
+          "id": "S125",
+          "shortDescription": "Sections of code should not be commented out",
+          "fullDescription": "Commented-out code distracts the focus from the actual executed code. It creates a noise that increases maintenance code. And because it is never executed, it quickly becomes out of date and invalid.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-125",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S1450": {
+          "id": "S1450",
+          "shortDescription": "Private fields only used as local variables in methods should become local variables",
+          "fullDescription": "When the value of a private field is always assigned to in a class' methods before being read, then it is not being used to store class information. Therefore, it should become a local variable in the relevant methods to prevent any misunderstanding.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1450",
+          "properties": {
+            "category": "Minor Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S1481": {
+          "id": "S1481",
+          "shortDescription": "Unused local variables should be removed",
+          "fullDescription": "An unused local variable is a variable that has been declared but is not used anywhere in the block of code where it is defined. It is dead code, contributing to unnecessary complexity and leading to confusion when reading the code. Therefore, it should be removed from your code to maintain clarity and efficiency.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1481",
+          "properties": {
+            "category": "Minor Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S2068": {
+          "id": "S2068",
+          "shortDescription": "Hard-coded credentials are security-sensitive",
+          "fullDescription": "Because it is easy to extract strings from an application source code or binary, credentials should not be hard-coded. This is particularly true for applications that are distributed or that are open-source.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-2068",
+          "properties": {
+            "category": "Blocker Security Hotspot",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S2971": {
+          "id": "S2971",
+          "shortDescription": "LINQ expressions should be simplified",
+          "fullDescription": "In the interests of readability, code that can be simplified should be simplified. To that end, there are several ways IEnumerable language integrated queries (LINQ) can be simplified. This not only improves readabilty but can also lead to improved performance.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-2971",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S3459": {
+          "id": "S3459",
+          "shortDescription": "Unassigned members should be removed",
+          "fullDescription": "Fields and auto-properties that are never assigned to hold the default values for their types. They are either pointless code or, more likely, mistakes.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-3459",
+          "properties": {
+            "category": "Minor Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S3626": {
+          "id": "S3626",
+          "shortDescription": "Jump statements should not be redundant",
+          "fullDescription": "Jump statements, such as return, yield break, goto, and continue let you change the default flow of program execution, but jump statements that direct the control flow to the original direction are just a waste of keystrokes.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-3626",
+          "properties": {
+            "category": "Minor Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S3928": {
+          "id": "S3928",
+          "shortDescription": "Parameter names used into ArgumentException constructors should match an existing one ",
+          "fullDescription": "Some constructors of the ArgumentException, ArgumentNullException, ArgumentOutOfRangeException and DuplicateWaitObjectException classes must be fed with a valid parameter name. This rule raises an issue in two cases:",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-3928",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S4487": {
+          "id": "S4487",
+          "shortDescription": "Unread \"private\" fields should be removed",
+          "fullDescription": "Private fields which are written but never read are a case of \"dead store\". Changing the value of such a field is useless and most probably indicates an error in the code.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-4487",
+          "properties": {
+            "category": "Critical Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S6608": {
+          "id": "S6608",
+          "shortDescription": "Prefer indexing instead of \"Enumerable\" methods on types implementing \"IList\"",
+          "fullDescription": "Indexes in C# provide direct access to an element at a specific position within an array or collection. When compared to Enumerable methods, indexing can be more efficient for certain scenarios, such as iterating over a large collection, due to avoiding the overhead of checking the underlying collection type before accessing it.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-6608",
+          "properties": {
+            "category": "Minor Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

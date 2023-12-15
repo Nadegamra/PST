@@ -1,0 +1,1 @@
+/home/karolis/Github/Univeras/7-semestras/Programų Sistemų Testavimas/PST/Backend/.sonarqube/out/1

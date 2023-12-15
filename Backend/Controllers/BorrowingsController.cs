@@ -7,7 +7,7 @@ namespace Backend.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class BorrowingsController: ControllerBase
+    public class BorrowingsController : ControllerBase
     {
         private readonly BorrowingsHandler _handler;
 
@@ -23,7 +23,8 @@ namespace Backend.Controllers
             {
                 var result = await _handler.GetAllAsync();
                 return Ok(result);
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }

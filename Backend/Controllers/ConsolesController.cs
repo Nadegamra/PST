@@ -10,7 +10,7 @@ namespace Backend.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class ConsolesController: ControllerBase
+    public class ConsolesController : ControllerBase
     {
         private readonly ConsolesHandler _consolesHandler;
         private readonly FilesHandler _imagesHandler;
@@ -30,11 +30,12 @@ namespace Backend.Controllers
 
                 return Ok(result);
 
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
-            
+
         }
         [HttpGet("get/{id}")]
         public async Task<ActionResult<ImageUploadResult>> GetConsole(int id)

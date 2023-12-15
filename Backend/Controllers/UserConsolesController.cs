@@ -11,7 +11,7 @@ namespace Backend.Controllers
     [ApiController]
     [Route("[controller]")]
     [Authorize]
-    public class UserConsolesController: ControllerBase
+    public class UserConsolesController : ControllerBase
     {
         private readonly UserConsolesHandler _userConsolesHandler;
         private readonly FilesHandler _imagesHandler;
@@ -146,7 +146,7 @@ namespace Backend.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        [Authorize(Roles ="admin")]
+        [Authorize(Roles = "admin")]
         [HttpPatch("updateStatus")]
         public async Task<ActionResult> UpdateStatus(UserConsoleStatusUpdateDto updateDto)
         {
@@ -167,7 +167,7 @@ namespace Backend.Controllers
         {
             try
             {
-                await _userConsolesHandler.UpdateStatus(new UserConsoleStatusUpdateDto { Id=id, ConsoleStatus=Data.Models.UserConsoleStatus.AWAITING_TERMINATION_BY_LENDER},User);
+                await _userConsolesHandler.UpdateStatus(new UserConsoleStatusUpdateDto { Id = id, ConsoleStatus = Data.Models.UserConsoleStatus.AWAITING_TERMINATION_BY_LENDER }, User);
                 return Ok();
 
             }
